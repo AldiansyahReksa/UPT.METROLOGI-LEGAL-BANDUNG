@@ -61,7 +61,7 @@ class KartuController extends Controller
       if ($searchQuery) {
           $kartus = Kartu::where('pemilik_uttp', 'LIKE', '%' . $searchQuery . '%')->get();
       } else {
-          $kartus = Kartu::all();
+          $kartus = Order::all();
       }
   
       return view('kartus.find', compact('kartus'));

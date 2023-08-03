@@ -15,15 +15,16 @@
     @if ($kartus->count() > 0)
         <ul>
             @foreach ($kartus as $kartu)
-                <li>
+             
                     <a href="{{ url('/kartu/' . $kartu->id) }}">
                         {{ $kartu->pemilik_uttp }}
                     </a>
-                </li>
+             
             @endforeach
         </ul>
     @else
         <p>No results found.</p>
     @endif
-
+    <a href="{{ route('kartu.find') }}" class="btn btn-primary">Back</a>
+    <a href="/" class="btn btn-primary">Halaman Utama</a>
 </x-bootstrap>
