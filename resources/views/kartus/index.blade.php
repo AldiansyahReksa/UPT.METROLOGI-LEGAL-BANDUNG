@@ -7,7 +7,6 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Pemilik UTTP</th>
         <th scope="col">Nomor Telepon</th>
         <th scope="col">Alamat</th>
         <th scope="col">Kelurahan</th>
@@ -19,7 +18,6 @@
       @foreach ($kartus as $kartu)
       <tr>
         <th scope="row">{{ $kartu->id }}</th>
-        <td>{{ $kartu->pemilik_uttp }}</td>
         <td>{{ $kartu->nomor_telepon }}</td>
         <td>{{ $kartu->alamat }}</td>
         <td>{{ $kartu->kelurahan }}</td>
