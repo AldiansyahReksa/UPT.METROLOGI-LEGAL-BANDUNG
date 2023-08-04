@@ -93,19 +93,19 @@
             </tr>
             <tr>
                 <td colspan="3">Nama Alat <br> <div id="translate">Meassuring Instrument</div> </td>
-                <td colspan="6">:<tab>Timbangan Elektronik</td>
+                <td colspan="6">:<tab>{{ $order->jenis_alat_uttp }}</td>
                 <td class="outlined" colspan="3">Nomor Order : 01089</td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Merk / Buatan <br> <div id="translate">Trade Mark / Manufactured by</div> </td>
-                <td colspan="4">:<tab>METTLER TOLEDO </td>
+                <td colspan="4">:<tab>{{ $order->merek }} </td>
                 <td colspan="4"> </td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Model / Tipe <br> <div id="translate">Model / Type</div> </td>
-                <td colspan="4">:<tab>PE 3600 </td>
+                <td colspan="4">:<tab>{{ $order->tipe_atau_model }} </td>
                 <td colspan="4"> </td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
@@ -125,7 +125,7 @@
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Pemakai<br> <div id="translate">Owner / User</div> </td>
-                <td colspan="4">:<tab>Tachrudin </td>
+                <td colspan="4">:<tab>{{ $kartu->pemilik_uttp }} </td>
                 <td colspan="4"> </td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>

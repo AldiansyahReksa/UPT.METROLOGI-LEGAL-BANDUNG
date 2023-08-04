@@ -87,11 +87,12 @@ class OrderController extends Controller
         return view('orders.index', ['orders' => $orders]);
     }
 
-    public function cetak_pdf($id)
+    public function cetak_pdf($kartu_id,$id)
     {
+        $kartu = Kartu::find($kartu_id);
     	$order = Order::find($id);
  
-    	$pdf = PDF::loadview('orders/detail_pdf',['order'=>$order]);
+    	$pdf = PDF::loadview('orders/detail_pdf',['order' => $order],['kartu' => $kartu]);
         $pdf->setPaper('legal', 'potrait');
     	return $pdf->download('SKHP.pdf');
     }
