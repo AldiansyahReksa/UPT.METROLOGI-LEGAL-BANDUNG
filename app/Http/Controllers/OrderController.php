@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\Kartu;
 use App\Models\Order;
@@ -48,12 +48,17 @@ class OrderController extends Controller
       return redirect('/order/' . $order->id)->with('success', 'Data created!');
   }
 
-    public function getById($id)
-    {
-        $order = Order::find($id);
-
-        return view('orders.orderdetail', ['order' => $order]);
-    }
+  public function getById($id)
+  {
+      try {
+          $order = Order::with('kartu')->findOrFail($id);
+          return view('orders.orderdetail', ['order' => $order]);
+      } catch (ModelNotFoundException $exception) {
+          // If order with the given ID is not found, handle the error
+          return back()->with('error', 'Order not found!');
+      }
+  }
+  
 
     public function formInsert($kartu_id = null)
     {
