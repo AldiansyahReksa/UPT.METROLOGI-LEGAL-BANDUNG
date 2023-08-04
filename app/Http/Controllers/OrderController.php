@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kartu;
 use App\Models\Order;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -79,5 +80,14 @@ class OrderController extends Controller
 
         // For example, you can return a view with the orders data
         return view('orders.index', ['orders' => $orders]);
+    }
+
+    public function cetak_pdf($id)
+    {
+    	$order = Order::find($id);
+ 
+    	$pdf = PDF::loadview('orders/detail_pdf',['order'=>$order]);
+        $pdf->setPaper('legal', 'potrait');
+    	return $pdf->download('SKHP.pdf');
     }
 }

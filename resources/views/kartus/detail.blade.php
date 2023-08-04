@@ -58,6 +58,7 @@
                     <th scope="col">Jenis Pengukuran</th>
                     <th scope="col">Jumlah AT</th>
                     <th scope="col">Keterangan</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,6 +74,7 @@
                         <td>{{ $order->jenis_pengukuran }}</td>
                         <td>{{ $order->jumlah_at }}</td>
                         <td>{{ $order->keterangan }}</td>
+                        <td> <a href="/order/print/{{ $order->id }}" class="btn btn-primary" target="_blank">CETAK PDF</a></td>
                     </tr>
                 @endforeach
             </tbody>
