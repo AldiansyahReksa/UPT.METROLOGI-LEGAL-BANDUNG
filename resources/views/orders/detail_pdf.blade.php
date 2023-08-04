@@ -18,12 +18,12 @@
         }
 
         #halaman{
-            font-size: 12px;
+           font-size: 12px;
             width: 20cm; 
             height: 34.56cm; 
             position: absolute; 
             border: 1px solid; 
-            padding-top: 30px; 
+            padding-top: 200px; 
             padding-left: 30px; 
             padding-right: 30px; 
             padding-bottom: 80px;
@@ -36,7 +36,7 @@
             font-style: italic;
         }
         #spasi{
-            font-size: 5px;
+            font-size: 7px;
         }
         tab {
         display: inline-block;
@@ -74,7 +74,7 @@
     <div id=halaman>
         <div id="judul"><u>SURAT KETERANGAN HASIL PENGUJIAN</u></div>
         <div id="nomor">Nomor. PG.05.05/2535/VI/2023</div>
-        <br>
+        <br> <br> <br>
         <table border="0"  width="100%">
             <tr>
                 <td width="8.3%"> </td>
@@ -111,16 +111,16 @@
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Nomor Seri <br> <div id="translate">Serial Number</div> </td>
-                <td colspan="4">:<tab>-</td>
+                <td colspan="4">:<tab>{{ $order->nomor_seri }}</td>
                 <td colspan="2"><tab>Kelas<br> <div id="translate">Class</div> </td>
-                <td colspan="2">:  II </td>
+                <td colspan="2">:  {{ $order->kelas }}</td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Kapasitas / Massa Nominal <br> <div id="translate">Capacity / Nominal Mass</div> </td>
-                <td colspan="4">:<tab>3600 g</td>
+                <td colspan="4">:<tab>{{ $order->kapasitas }}</td>
                 <td colspan="2"><tab>Daya Baca <br> <div id="translate">Readdabilty</div> </td>
-                <td colspan="2">: 0.1 g </td>
+                <td colspan="2">: {{ $order->skala }}</td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
@@ -131,7 +131,7 @@
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Alamat<br> <div id="translate">Address</div> </td>
-                <td id="top" colspan="8" rowspan="2" >:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jl. Pasundan, Kel. Balong Gede, Kec. Regol, Kota Bandung</td>
+                <td id="top" colspan="8" rowspan="2" >:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $kartu->alamat }}</td>
             </tr>
             <tr>
                 <td colspan="4">&nbsp;</td>
@@ -171,9 +171,10 @@
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
-                <td colspan="7">Surat Keterangan Hasil Pengujian ini berlaku sampai dengan :<br> <div id="translate">This certivicate is valid until</div> </td>
-                <td colspan="5">Juni 2024</td>
+                <td colspan="6">Surat Keterangan Hasil Pengujian ini berlaku sampai dengan :<br> <div id="translate">This certivicate is valid until</div> </td>
+                <td id="top" colspan="6">Juni 2024</td>
             </tr>
+            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="7"></td>
@@ -203,6 +204,8 @@
                 <td colspan="7"></td>
                 <td class="ttd" colspan="5">NIP.19700212 200501 1 009</td>
             </tr>
+            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
+            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="3">Catatan : <br> <div id="translate">Notes</div> </td>
                 <td colspan="9"></td>
