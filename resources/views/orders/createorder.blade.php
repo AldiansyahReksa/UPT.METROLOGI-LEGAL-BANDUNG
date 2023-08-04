@@ -67,24 +67,100 @@
     </div>
 
     <div class="mb-3">
-      <label for="kapasitas" class="form-label">kapasitas</label>
-      <input type="text" class="form-control  @error('kapasitas') is-invalid @enderror" id="kapasitas" name="kapasitas" value="{{ old('kapasitas') }}" placeholder="kapasitas">
-      <div class="@error('kapasitas') @enderror invalid-feedback">
+    <label for="kapasitas" class="form-label">kapasitas</label>
+    <input type="text" class="form-control  @error('kapasitas') is-invalid @enderror" id="kapasitas" name="kapasitas" value="{{ old('kapasitas') }}" data-decimal-separator="." placeholder="kapasitas">
+    <div class="@error('kapasitas') @enderror invalid-feedback">
         @foreach ($errors->get('kapasitas') as $message)
         {{ $message }}
         @endforeach
-      </div>
     </div>
+</div>
 
-    <div class="mb-3">
-      <label for="kelas" class="form-label">Kelas</label>
-      <input type="text" class="form-control  @error('kelas') is-invalid @enderror" id="kelas" name="kelas" value="{{ old('kelas') }}" placeholder="Kelas">
-      <div class="@error('kelas') @enderror invalid-feedback">
+<div class="mb-3">
+    <label for="skala" class="form-label">Skala</label>
+    <input type="text" class="form-control  @error('skala') is-invalid @enderror" id="skala" name="skala" value="{{ old('skala') }}" data-decimal-separator="." placeholder="skala">
+    <div class="@error('skala') @enderror invalid-feedback">
+        @foreach ($errors->get('skala') as $message)
+        {{ $message }}
+        @endforeach
+    </div>
+</div>
+
+
+<div class="mb-3">
+    <label for="hasil_skala" class="form-label">Hasil Skala</label>
+    <input type="text" class="form-control" id="hasil_skala" name="hasil_skala" value="{{ old('hasil_skala') }}" placeholder="Hasil Skala" readonly>
+</div>
+
+
+<div class="mb-3">
+    <label for="kelas" class="form-label">Kelas</label>
+    <input type="text" class="form-control  @error('kelas') is-invalid @enderror" id="kelas" name="kelas" value="{{ old('kelas') }}" placeholder="Kelas" readonly>
+    <div class="@error('kelas') @enderror invalid-feedback">
         @foreach ($errors->get('kelas') as $message)
         {{ $message }}
         @endforeach
-      </div>
     </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function updateKelasAndHasilSkala() {
+            let kapasitas = parseFloat($('#kapasitas').val());
+            let skala = parseFloat($('#skala').val());
+
+            if (isNaN(kapasitas) || isNaN(skala) || skala === 0) {
+                $('#kelas').val('');
+                $('#hasil_skala').val('');
+                return;
+            }
+
+            let totalKapasitas = kapasitas / skala;
+            let kelas;
+            if (totalKapasitas >= 10000) {
+                kelas = 'Kelas II';
+            } else if (totalKapasitas >= 1000) {
+                kelas = 'Kelas III';
+            } else {
+                kelas = 'Kelas IIII';
+            }
+            $('#kelas').val(kelas);
+
+            // Calculate and display "Hasil Skala"
+            let hasilSkala = (kapasitas / skala).toFixed(2);
+            $('#hasil_skala').val(hasilSkala);
+        }
+
+        $('#kapasitas, #skala').on('input', function () {
+            let value = $(this).val();
+            // Use the custom attribute "data-decimal-separator" to determine the decimal separator
+            let decimalSeparator = $(this).data('decimal-separator');
+            // Replace the comma with the decimal separator in the input
+            value = value.replace(',', decimalSeparator);
+            // Check if the value is a valid number
+            if (!$.isNumeric(value)) {
+                $(this).val('');
+            } else {
+                $(this).val(value);
+            }
+            updateKelasAndHasilSkala();
+        });
+
+        // Call updateKelasAndHasilSkala() initially to set the initial values of "kelas" and "hasil_skala"
+        updateKelasAndHasilSkala();
+    });
+</script>
+
+
+
+
+
+
+
+
+
 
     <div class="mb-3">
   <label for="jenis_pengukuran" class="form-label">Jenis Pengukuran</label>

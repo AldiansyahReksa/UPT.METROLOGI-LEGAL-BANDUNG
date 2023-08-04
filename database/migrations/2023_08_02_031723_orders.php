@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('merek');
             $table->string('tipe_atau_model');
             $table->string('nomor_seri');
-            $table->string('kapasitas');
+            $table->float('kapasitas');
+            $table->float('skala');
+            $table->float('hasil_skala');
             $table->string('kelas');
             $table->string('jenis_pengukuran');
             $table->string('jumlah_at')->nullable();
