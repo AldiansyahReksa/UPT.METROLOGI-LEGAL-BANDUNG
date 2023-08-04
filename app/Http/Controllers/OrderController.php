@@ -52,7 +52,7 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
 
-        return view('orders.detail', ['order' => $order]);
+        return view('orders.orderdetail', ['order' => $order]);
     }
 
     public function formInsert($kartu_id = null)

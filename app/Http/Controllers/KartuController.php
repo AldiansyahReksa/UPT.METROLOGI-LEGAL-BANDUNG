@@ -47,7 +47,7 @@ class KartuController extends Controller
       try {
           $kartu = Kartu::findOrFail($id);
 
-          return view('kartus.detail', ['kartu' => $kartu]);
+          return view('kartus.kartudetail', ['kartu' => $kartu]);
       } catch (ModelNotFoundException $exception) {
           // If kartu with the given ID is not found, handle the error
           return back()->with('error', 'Kartu not found!');
