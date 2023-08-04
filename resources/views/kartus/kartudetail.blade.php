@@ -69,7 +69,7 @@
                         <td>{{ $order->merek }}</td>
                         <td>{{ $order->tipe_atau_model }}</td>
                         <td>{{ $order->nomor_seri }}</td>
-                        <td>{{ $order->kapasitas }}</td>
+                        <td>{{ $order->kapasitas }} x {{ $order->skala }} </td>
                         <td>{{ $order->kelas }}</td>
                         <td>{{ $order->jenis_pengukuran }}</td>
                         <td>{{ $order->jumlah_at }}</td>
