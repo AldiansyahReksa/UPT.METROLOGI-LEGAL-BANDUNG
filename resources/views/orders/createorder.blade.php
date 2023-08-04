@@ -120,11 +120,11 @@
             let totalKapasitas = kapasitas / skala;
             let kelas;
             if (totalKapasitas >= 10000) {
-                kelas = 'Kelas II';
+                kelas = ' II';
             } else if (totalKapasitas >= 1000) {
-                kelas = 'Kelas III';
+                kelas = ' III';
             } else {
-                kelas = 'Kelas IIII';
+                kelas = ' IIII';
             }
             $('#kelas').val(kelas);
 
