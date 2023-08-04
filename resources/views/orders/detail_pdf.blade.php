@@ -131,7 +131,8 @@
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Alamat<br> <div id="translate">Address</div> </td>
-                <td id="top" colspan="8" rowspan="2" >:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $kartu->alamat }}</td>
+                <td id="top" colspan="8" rowspan="2" >:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $kartu->alamat }} Kel. {{$kartu->kelurahan}}
+                Kec. {{$kartu->kecamatan}} Kota Bandung</td>
             </tr>
             <tr>
                 <td colspan="4">&nbsp;</td>
