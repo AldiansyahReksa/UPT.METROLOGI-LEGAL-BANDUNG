@@ -1,8 +1,8 @@
 <?php
-
 use App\Http\Controllers\KartuController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', [KartuController::class, 'index']);
 Route::post('/kartu/with-model', [KartuController::class, 'insertWithModel']);
@@ -15,4 +15,3 @@ Route::get('/order/form', [OrderController::class, 'formInsert']);
 Route::get('/order/print/{idkartu}/{id}', [OrderController::class, 'cetak_pdf']);
 Route::get('/order/{id}', [OrderController::class, 'getById']);
 Route::get('/order/form/{kartu_id?}', [OrderController::class, 'formInsert'])->name('order.form');
-
