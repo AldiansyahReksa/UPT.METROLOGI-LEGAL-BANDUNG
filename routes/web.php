@@ -1,8 +1,8 @@
 <?php
-
 use App\Http\Controllers\KartuController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', [KartuController::class, 'index']);
 Route::post('/kartu/with-model', [KartuController::class, 'insertWithModel']);
