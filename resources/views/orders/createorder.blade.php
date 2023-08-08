@@ -67,7 +67,7 @@
     </div>
 
     <div class="mb-3">
-    <label for="kapasitas" class="form-label">kapasitas</label>
+    <label for="kapasitas" class="form-label">kapasitas (gram)</label>
     <input type="text" class="form-control  @error('kapasitas') is-invalid @enderror" id="kapasitas" name="kapasitas" value="{{ old('kapasitas') }}" placeholder="kapasitas">
     <div class="@error('kapasitas') @enderror invalid-feedback">
         @foreach ($errors->get('kapasitas') as $message)
@@ -77,7 +77,7 @@
 </div>
 
 <div class="mb-3">
-    <label for="skala" class="form-label">Skala</label>
+    <label for="skala" class="form-label">Skala (gram)</label>
     <input type="text" class="form-control  @error('skala') is-invalid @enderror" id="skala" name="skala" value="{{ old('skala') }}" placeholder="skala">
     <div class="@error('skala') @enderror invalid-feedback">
         @foreach ($errors->get('skala') as $message)
@@ -85,12 +85,6 @@
         @endforeach
     </div>
 </div>
-
-<div class="mb-3">
-    <label for="hasil_skala" class="form-label">Hasil Skala</label>
-    <input type="text" class="form-control" id="hasil_skala" name="hasil_skala" value="{{ old('hasil_skala') }}" placeholder="Hasil Skala" readonly>
-</div>
-
 
 <div class="mb-3">
     <label for="kelas" class="form-label">Kelas</label>
@@ -116,7 +110,7 @@
                 return;
             }
 
-            let totalKapasitas = kapasitas * skala;
+            let totalKapasitas = kapasitas / skala;
             let kelas;
             if (totalKapasitas >= 10000) {
                 kelas = 'Kelas II';
