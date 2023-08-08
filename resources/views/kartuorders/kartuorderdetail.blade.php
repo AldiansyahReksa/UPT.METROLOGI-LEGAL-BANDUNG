@@ -1,28 +1,92 @@
 <x-bootstrap>
     <x-slot name="title">
-        Order Details
+        Detail Kartu Order
     </x-slot>
 
-    <div class="card">
-        <div class="card-header">
-            Order Details for ID: {{ $order->id }}
-        </div>
-        <div class="card-body">
-            <p>Jenis Alat UTTP: {{ $order->jenis_alat_uttp }}</p>
-            <p>Merek: {{ $order->merek }}</p>
-            <p>Tipe/Model: {{ $order->tipe_atau_model }}</p>
-            <p>Nomor/Seri: {{ $order->nomor_seri }}</p>
-            <p>Kapasitas: {{ $order->kapasitas }}</p>
-            <p>Kelas: {{ $order->kelas }}</p>
-            <p>Jenis Pengukuran: {{ $order->jenis_pengukuran }}</p>
-            <p>Jumlah AT: {{ $order->jumlah_at }}</p>
-            <p>Keterangan: {{ $order->keterangan }}</p>
-            <!-- Display other order details here -->
-        </div>
-    </div>
-
-    <a href="{{ url('/kartu/' . $order->kartu->id) }}" class="btn btn-secondary">Back to Detail</a>
+    <!-- Display the kartu details -->
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">ID</th>
+                <td>{{ $kartu->id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nama Pemilik</th>
+                <td>{{ $kartu->pemilik_uttp }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Alamat</th>
+                <td>{{ $kartu->alamat }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nomor telepon</th>
+                <td>{{ $kartu->nomor_telepon }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Kelurahan</th>
+                <td>{{ $kartu->kelurahan }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Kecamatan</th>
+                <td>{{ $kartu->kecamatan }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nomor Kartu Order</th>
+                <td>{{ $kartuorder->id }}</td>
+            </tr>
+        </tbody>
+    </table>
 
     <hr />
 
+    <!-- Button to create an order for this kartu -->
+    <h2>Isi Kartu Order</h2>
+    <a href="{{ route('order.form', ['kartu_id' => $kartu->id]) }}" class="btn btn-primary">Tambah Alat UTTP</a>
+    <a href="/" class="btn btn-primary">Halaman Utama</a>
+    <hr />
+
+    <!-- Display orders related to this kartu -->
+    <h2>Daftar Alat UTTP</h2>
+
+    @if (count($kartuorder->orders) > 0)
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Jenis Alat UTTP</th>
+                    <th scope="col">Merek</th>
+                    <th scope="col">Tipe Atau Model</th>
+                    <th scope="col">Nomor Seri</th>
+                    <th scope="col">Kapasitas</th>
+                    <th scope="col">Kelas</th>
+                    <th scope="col">Jenis Pengukuran</th>
+                    <th scope="col">Jumlah AT</th>
+                    <th scope="col">Keterangan</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($kartuorder->orders as $order)
+                    <tr>
+                        <th scope="row">{{ $order->id }}</th>
+                        <td>{{ $order->jenis_alat_uttp }}</td>
+                        <td>{{ $order->merek }}</td>
+                        <td>{{ $order->tipe_atau_model }}</td>
+                        <td>{{ $order->nomor_seri }}</td>
+                        <td>{{ $order->kapasitas }} x {{ $order->skala }} </td>
+                        <td>{{ $order->kelas }}</td>
+                        <td>{{ $order->jenis_pengukuran }}</td>
+                        <td>{{ $order->jumlah_at }}</td>
+                        <td>{{ $order->keterangan }}</td>
+                        <td> 
+                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>
+                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>Empty Data</p>
+    @endif
 </x-bootstrap>

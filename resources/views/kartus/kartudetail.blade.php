@@ -30,21 +30,22 @@
                 <th scope="row">Kecamatan</th>
                 <td>{{ $kartu->kecamatan }}</td>
             </tr>
+            
         </tbody>
     </table>
 
     <hr />
 
     <!-- Button to create an order for this kartu -->
-    <h2>Isi Kartu Order</h2>
-    <a href="{{ route('order.form', ['kartu_id' => $kartu->id]) }}" class="btn btn-primary">Isi Kartu Order</a>
+    <h2>Buat Kartu Order Baru</h2>
+    <a href="{{ route('kartuorder.form', ['kartu_id' => $kartu->id]) }}" class="btn btn-primary">Buat Baru</a>
     <a href="/" class="btn btn-primary">Halaman Utama</a>
     <hr />
 
     <!-- Display orders related to this kartu -->
-    <h2>Kartu Order</h2>
+    <h2>Daftar Kartu Order</h2>
 
-    @if (count($kartu->kartu_orders) > 0)
+    @if (count($kartu->kartuorders) > 0)
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -54,12 +55,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($kartu->Kartu_orders as $kartu_order)
+                @foreach ($kartu->Kartuorders as $kartuorder)
                     <tr>
-                        <th scope="row">{{ $kartu_order->id }}</th>
+                        <th scope="row">{{ $kartuorder->id }}</th>
                         <td></td>
                         <td> 
-                            <a href="/kartuorder/{{ $kartu->id }}">
+                            <a href="/kartuorder/{{ $kartu->id }}/{{ $kartuorder->id }}">
                                 <i class="bi-search"></i>
                             </a>
                             {{-- <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>

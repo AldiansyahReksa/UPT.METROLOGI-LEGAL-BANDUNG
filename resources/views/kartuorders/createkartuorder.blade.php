@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="{{ url('/order/with-model') }}" method="POST">
+    <form action="{{ url('/kartuorder/with-model') }}" method="POST">
         @csrf
         <!-- If $kartu is not null, display the kartu_id field -->
         @if ($kartu)

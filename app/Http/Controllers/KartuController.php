@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\Kartu;
+use App\Models\Order;
+use App\Models\KartuOrder;
 
 use DateTime;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

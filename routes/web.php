@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\KartuController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\KartuOrderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,15 +11,15 @@ Route::get('/kartu/form', [KartuController::class, 'formInsert']);
 Route::get('/kartu/find', [KartuController::class, 'find'])->name('kartu.find');
 Route::get('/kartu/{id}', [KartuController::class, 'getById']);
 
-Route::post('/order/with-model', [OrderController::class, 'insertWithModel']);
-Route::get('/order/form', [OrderController::class, 'formInsert']);
-Route::get('/order/print/{idkartu}/{id}', [OrderController::class, 'cetak_pdf']);
-Route::get('/order/{id}', [OrderController::class, 'getById']);
-Route::get('/order/form/{kartu_id?}', [OrderController::class, 'formInsert'])->name('order.form');
+Route::get('/kartuorder/form/{kartu_id?}', [KartuOrderController::class, 'formInsert'])->name('kartuorder.form');
+Route::post('/kartuorder/with-model', [OrderController::class, 'insertWithModel']);
+// Route::get('/kartuorder/form', [KartuOrderController::class, 'formInsert']);
+// Route::get('/order/print/{idkartu}/{id}', [OrderController::class, 'cetak_pdf']);
+Route::get('/kartuorder/{idkartu}/{id}', [KartuOrderController::class, 'getById']);
 
 Route::post('/order/with-model', [OrderController::class, 'insertWithModel']);
 Route::get('/order/form', [OrderController::class, 'formInsert']);
 Route::get('/order/print/{idkartu}/{id}', [OrderController::class, 'cetak_pdf']);
 Route::get('/order/{id}', [OrderController::class, 'getById']);
-Route::get('/order/form/{kartu_id?}', [OrderController::class, 'formInsert'])->name('order.form');
+Route::get('/order/form/{kartu_id?}/{kartuorder_id?}', [OrderController::class, 'formInsert'])->name('order.form');
 

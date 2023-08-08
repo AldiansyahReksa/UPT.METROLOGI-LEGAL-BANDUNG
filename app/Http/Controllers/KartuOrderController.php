@@ -1,18 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 use App\Models\Kartu;
 use App\Models\Order;
 use App\Models\KartuOrder;
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
-use Barryvdh\DomPDF\Facade\Pdf;
 
-class OrderController extends Controller
+class KartuOrderController extends Controller
 {
 
-public function insertWithModel(Request $request)
+    public function insertWithModel(Request $request)
 {
     $validator = Validator::make($request->all(), [
         'kartu_id' => 'required|exists:kartus,id',
@@ -73,18 +72,18 @@ public function insertWithModel(Request $request)
     return redirect('/kartu/' . $kartu_order->kartu_id)->with('success', 'Data created!');
 }
 
-
-  public function getById($id)
+    public function getById($kartu_id,$id)
   {
       try {
-          $order = Order::with('kartu')->findOrFail($id);
-          return view('orders.orderdetail', ['order' => $order]);
+        $kartu = Kartu::findOrFail($kartu_id);
+        $kartuorder = KartuOrder::findOrFail($id);
+
+          return view('kartuorders.kartuorderdetail', ['kartu' => $kartu], ['kartuorder' => $kartuorder]);
       } catch (ModelNotFoundException $exception) {
-          // If order with the given ID is not found, handle the error
-          return back()->with('error', 'Order not found!');
+          // If kartu with the given ID is not found, handle the error
+          return back()->with('error', 'Kartu not found!');
       }
   }
-  
 
     public function formInsert($kartu_id = null)
     {
@@ -95,30 +94,6 @@ public function insertWithModel(Request $request)
             $kartu = Kartu::find($kartu_id);
         }
     
-        return view('orders.createorder', compact('kartu'));
-    }
-
-    public function getOrdersByKartu($kartuId)
-    {
-        // Find the kartu with the given ID
-        $kartu = Kartu::findOrFail($kartuId);
-
-        // Retrieve orders related to the kartu
-        $orders = $kartu->orders;
-
-        // Now you can use $orders to display or manipulate the related orders data
-
-        // For example, you can return a view with the orders data
-        return view('orders.index', ['orders' => $orders]);
-    }
-
-    public function cetak_pdf($kartu_id,$id)
-    {
-        $kartu = Kartu::find($kartu_id);
-    	$order = Order::find($id);
- 
-    	$pdf = PDF::loadview('orders/detail_pdf',['order' => $order],['kartu' => $kartu]);
-        $pdf->setPaper('legal', 'potrait');
-    	return $pdf->download('SKHP.pdf');
+        return view('kartuorders.createkartuorder', compact('kartu'));
     }
 }
