@@ -16,3 +16,9 @@ Route::get('/order/print/{idkartu}/{id}', [OrderController::class, 'cetak_pdf'])
 Route::get('/order/{id}', [OrderController::class, 'getById']);
 Route::get('/order/form/{kartu_id?}', [OrderController::class, 'formInsert'])->name('order.form');
 
+Route::post('/order/with-model', [OrderController::class, 'insertWithModel']);
+Route::get('/order/form', [OrderController::class, 'formInsert']);
+Route::get('/order/print/{idkartu}/{id}', [OrderController::class, 'cetak_pdf']);
+Route::get('/order/{id}', [OrderController::class, 'getById']);
+Route::get('/order/form/{kartu_id?}', [OrderController::class, 'formInsert'])->name('order.form');
+

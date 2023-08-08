@@ -2,20 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\Order;
-use App\Models\KartuOrder;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Kartu extends Model
+class KartuOrder extends Model
 {
     use HasFactory;
 
-    public function kartu_orders(): HasMany
+    public function kartu()
+{
+    return $this->belongsTo(Kartu::class);
+}
+
+    public function orders(): HasMany
     {
-        return $this->hasMany(KartuOrder::class);
+        return $this->hasMany(Order::class);
     }
-    
 }

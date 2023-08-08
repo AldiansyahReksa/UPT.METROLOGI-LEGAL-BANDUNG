@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    public function kartu()
+    public function kartuOrder()
 {
-    return $this->belongsTo(Kartu::class);
+    return $this->belongsTo(KartuOrder::class);
 }
 }

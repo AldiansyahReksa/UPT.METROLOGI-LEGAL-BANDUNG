@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('Orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('kartu_id');
+            $table->unsignedBigInteger('kartuorder_id');
             $table->string('jenis_alat_uttp');
             $table->string('merek');
             $table->string('tipe_atau_model');
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('keterangan')->nullable();
             $table->timestamps();
 
-            $table->foreign('kartu_id')->references('id')->on('kartus');
+            $table->foreign('kartuorder_id')->references('id')->on('kartu_orders');
         });
     }
 

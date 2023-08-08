@@ -44,39 +44,26 @@
     <!-- Display orders related to this kartu -->
     <h2>Kartu Order</h2>
 
-    @if (count($kartu->orders) > 0)
+    @if (count($kartu->kartu_orders) > 0)
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Jenis Alat UTTP</th>
-                    <th scope="col">Merek</th>
-                    <th scope="col">Tipe Atau Model</th>
-                    <th scope="col">Nomor Seri</th>
-                    <th scope="col">Kapasitas</th>
-                    <th scope="col">Kelas</th>
-                    <th scope="col">Jenis Pengukuran</th>
-                    <th scope="col">Jumlah AT</th>
-                    <th scope="col">Keterangan</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col">Nomor Order</th>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Detail</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($kartu->orders as $order)
+                @foreach ($kartu->Kartu_orders as $kartu_order)
                     <tr>
-                        <th scope="row">{{ $order->id }}</th>
-                        <td>{{ $order->jenis_alat_uttp }}</td>
-                        <td>{{ $order->merek }}</td>
-                        <td>{{ $order->tipe_atau_model }}</td>
-                        <td>{{ $order->nomor_seri }}</td>
-                        <td>{{ $order->kapasitas }} x {{ $order->skala }} </td>
-                        <td>{{ $order->kelas }}</td>
-                        <td>{{ $order->jenis_pengukuran }}</td>
-                        <td>{{ $order->jumlah_at }}</td>
-                        <td>{{ $order->keterangan }}</td>
+                        <th scope="row">{{ $kartu_order->id }}</th>
+                        <td></td>
                         <td> 
-                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>
-                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a>
+                            <a href="/kartuorder/{{ $kartu->id }}">
+                                <i class="bi-search"></i>
+                            </a>
+                            {{-- <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>
+                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a> --}}
                         </td>
                     </tr>
                 @endforeach
