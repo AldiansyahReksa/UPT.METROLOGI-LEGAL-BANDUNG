@@ -74,7 +74,10 @@
                         <td>{{ $order->jenis_pengukuran }}</td>
                         <td>{{ $order->jumlah_at }}</td>
                         <td>{{ $order->keterangan }}</td>
-                        <td> <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary" target="_blank">CETAK PDF</a></td>
+                        <td> 
+                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>
+                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
