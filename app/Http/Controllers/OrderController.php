@@ -46,16 +46,12 @@ public function insertWithModel(Request $request)
         $kelas = 'Kelas IIII';
     }
 
-    $kartu_order = new KartuOrder();
-    
-    $kartu_order->kartu_id = $request->input('kartu_id'); 
-
-    $kartu_order->save();
+    $kartu_id = $request->input('kartu_id');
 
 
     $order = new Order();
 
-    $order->kartu_order_id = $kartu_order->id;
+    $order->kartu_order_id = $request->input('kartu_order_id');
     $order->jenis_alat_uttp = $request->input('jenis_alat_uttp');
     $order->merek = $request->input('merek');
     $order->tipe_atau_model = $request->input('tipe_atau_model');
@@ -70,7 +66,7 @@ public function insertWithModel(Request $request)
     $order->save();
 
     // Redirect to the detail view of the newly created order
-    return redirect('/kartu/' . $kartu_order->kartu_id)->with('success', 'Data created!');
+    return redirect('/kartuorder/' . $kartu_id . '/' . $order->kartu_order_id)->with('success', 'Data created!');
 }
 
 
@@ -86,16 +82,12 @@ public function insertWithModel(Request $request)
   }
   
 
-    public function formInsert($kartu_id = null)
+    public function formInsert($kartu_id,$kartuorder_id)
     {
-        $kartu = null;
-        
-        if ($kartu_id) {
-            // Find the kartu with the given ID
-            $kartu = Kartu::find($kartu_id);
-        }
+        $kartu = Kartu::findOrFail($kartu_id);
+        $kartuorder = KartuOrder::findOrFail($kartuorder_id);
     
-        return view('orders.createorder', compact('kartu'));
+        return view('orders.createorder', ['kartu' => $kartu], ['kartuorder' => $kartuorder]);
     }
 
     public function getOrdersByKartu($kartuId)

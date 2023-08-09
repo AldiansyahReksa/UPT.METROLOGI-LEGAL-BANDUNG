@@ -25,6 +25,16 @@
             </div>
         @endif
 
+        @csrf
+        <!-- If $kartu is not null, display the kartu_id field -->
+        @if ($kartuorder)
+            <div class="mb-3">
+                <label for="kartu_id" class="form-label">No. Kartu Order</label>
+                <input type="hidden" name="kartu_order_id" value="{{ $kartuorder->id }}">
+                <input type="text" class="form-control" disabled value="{{ $kartuorder->id }}" placeholder="No. Kartu Order">
+            </div>
+        @endif
+
 
     <div class="mb-3">
       <label for="jenis_alat_uttp" class="form-label">Jenis Alat UTTP</label>

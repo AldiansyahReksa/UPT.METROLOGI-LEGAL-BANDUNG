@@ -15,12 +15,12 @@
                 <td>{{ $kartu->pemilik_uttp }}</td>
             </tr>
             <tr>
-                <th scope="row">Alamat</th>
-                <td>{{ $kartu->alamat }}</td>
-            </tr>
-            <tr>
                 <th scope="row">Nomor telepon</th>
                 <td>{{ $kartu->nomor_telepon }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Alamat</th>
+                <td>{{ $kartu->alamat }}</td>
             </tr>
             <tr>
                 <th scope="row">Kelurahan</th>
@@ -45,11 +45,13 @@
     <!-- Display orders related to this kartu -->
     <h2>Daftar Kartu Order</h2>
 
+
+
     @if (count($kartu->kartuorders) > 0)
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Nomor Order</th>
+                    <th scope="col">No. Order</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Detail</th>
                 </tr>
@@ -58,7 +60,8 @@
                 @foreach ($kartu->Kartuorders as $kartuorder)
                     <tr>
                         <th scope="row">{{ $kartuorder->id }}</th>
-                        <td></td>
+                        <td>{{ $kartuorder->created_at ? $kartuorder->created_at->isoformat('D MMMM Y') : '' }}</td>
+
                         <td> 
                             <a href="/kartuorder/{{ $kartu->id }}/{{ $kartuorder->id }}">
                                 <i class="bi-search"></i>

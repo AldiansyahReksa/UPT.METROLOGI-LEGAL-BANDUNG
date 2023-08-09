@@ -72,11 +72,12 @@ class KartuOrderController extends Controller
     return redirect('/kartu/' . $kartu_order->kartu_id)->with('success', 'Data created!');
 }
 
-    public function getById($kartu_id,$id)
+
+    public function getById($kartu_id,$kartuorder_id)
   {
       try {
         $kartu = Kartu::findOrFail($kartu_id);
-        $kartuorder = KartuOrder::findOrFail($id);
+        $kartuorder = KartuOrder::findOrFail($kartuorder_id);
 
           return view('kartuorders.kartuorderdetail', ['kartu' => $kartu], ['kartuorder' => $kartuorder]);
       } catch (ModelNotFoundException $exception) {

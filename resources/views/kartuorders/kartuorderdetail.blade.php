@@ -4,35 +4,29 @@
     </x-slot>
 
     <!-- Display the kartu details -->
+
+
     <table class="table">
         <tbody>
             <tr>
-                <th scope="row">ID</th>
-                <td>{{ $kartu->id }}</td>
-            </tr>
-            <tr>
                 <th scope="row">Nama Pemilik</th>
                 <td>{{ $kartu->pemilik_uttp }}</td>
-            </tr>
-            <tr>
-                <th scope="row">Alamat</th>
-                <td>{{ $kartu->alamat }}</td>
             </tr>
             <tr>
                 <th scope="row">Nomor telepon</th>
                 <td>{{ $kartu->nomor_telepon }}</td>
             </tr>
             <tr>
-                <th scope="row">Kelurahan</th>
-                <td>{{ $kartu->kelurahan }}</td>
-            </tr>
-            <tr>
-                <th scope="row">Kecamatan</th>
-                <td>{{ $kartu->kecamatan }}</td>
+                <th scope="row">Alamat</th>
+                <td>{{ $kartu->alamat }}</td>
             </tr>
             <tr>
                 <th scope="row">Nomor Kartu Order</th>
                 <td>{{ $kartuorder->id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Tanggal</th>
+                <td>{{ $kartuorder->created_at ? $kartuorder->created_at->isoformat('D MMMM Y') : '' }}</td>
             </tr>
         </tbody>
     </table>
@@ -41,7 +35,7 @@
 
     <!-- Button to create an order for this kartu -->
     <h2>Isi Kartu Order</h2>
-    <a href="{{ route('order.form', ['kartu_id' => $kartu->id]) }}" class="btn btn-primary">Tambah Alat UTTP</a>
+    <a href="/order/form/{{ $kartu->id }}/{{ $kartuorder->id }}" class="btn btn-primary" >Tambah Alat UTTP</a>
     <a href="/" class="btn btn-primary">Halaman Utama</a>
     <hr />
 
