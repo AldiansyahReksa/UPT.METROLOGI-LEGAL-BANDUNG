@@ -28,7 +28,7 @@
 
     <div class="mb-3">
       <label for="jenis_alat_uttp" class="form-label">Jenis Alat UTTP</label>
-      <input type="text" class="form-control  @error('jenis_alat_uttp') is-invalid @enderror" id="jenis_alat_uttp" name="jenis_alat_uttp" value="{{ old('jenis_alat_uttp') }}" placeholder="jenis alat uttp">
+      <input type="text" class="form-control  @error('jenis_alat_uttp') is-invalid @enderror" id="jenis_alat_uttp" name="jenis_alat_uttp" value="{{ old('jenis_alat_uttp') }}" placeholder="Jenis Alat UTTP">
       <div class="@error('jenis_alat_uttp') @enderror invalid-feedback">
         @foreach ($errors->get('jenis_alat_uttp') as $message)
         {{ $message }}
@@ -67,8 +67,8 @@
     </div>
 
     <div class="mb-3">
-    <label for="kapasitas" class="form-label">kapasitas</label>
-    <input type="text" class="form-control  @error('kapasitas') is-invalid @enderror" id="kapasitas" name="kapasitas" value="{{ old('kapasitas') }}" data-decimal-separator="." placeholder="kapasitas">
+    <label for="kapasitas" class="form-label">Kapasitas (gram)</label>
+    <input type="text" class="form-control  @error('kapasitas') is-invalid @enderror" id="kapasitas" name="kapasitas" value="{{ old('kapasitas') }}" data-decimal-separator="." placeholder="Kapasitas">
     <div class="@error('kapasitas') @enderror invalid-feedback">
         @foreach ($errors->get('kapasitas') as $message)
         {{ $message }}
@@ -77,8 +77,8 @@
 </div>
 
 <div class="mb-3">
-    <label for="skala" class="form-label">Skala</label>
-    <input type="text" class="form-control  @error('skala') is-invalid @enderror" id="skala" name="skala" value="{{ old('skala') }}" data-decimal-separator="." placeholder="skala">
+    <label for="skala" class="form-label">Skala (gram)</label>
+    <input type="text" class="form-control  @error('skala') is-invalid @enderror" id="skala" name="skala" value="{{ old('skala') }}" data-decimal-separator="." placeholder="Skala">
     <div class="@error('skala') @enderror invalid-feedback">
         @foreach ($errors->get('skala') as $message)
         {{ $message }}
@@ -89,13 +89,13 @@
 
 <div class="mb-3">
     <label for="hasil_skala" class="form-label">Hasil Skala</label>
-    <input type="text" class="form-control" id="hasil_skala" name="hasil_skala" value="{{ old('hasil_skala') }}" placeholder="Hasil Skala" readonly>
+    <input type="text" class="form-control" id="hasil_skala" name="hasil_skala" value="{{ old('hasil_skala') }}" placeholder="" readonly>
 </div>
 
 
 <div class="mb-3">
     <label for="kelas" class="form-label">Kelas</label>
-    <input type="text" class="form-control  @error('kelas') is-invalid @enderror" id="kelas" name="kelas" value="{{ old('kelas') }}" placeholder="Kelas" readonly>
+    <input type="text" class="form-control  @error('kelas') is-invalid @enderror" id="kelas" name="kelas" value="{{ old('kelas') }}" placeholder="" readonly>
     <div class="@error('kelas') @enderror invalid-feedback">
         @foreach ($errors->get('kelas') as $message)
         {{ $message }}

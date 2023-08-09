@@ -34,10 +34,10 @@
     <hr />
 
     <!-- Button to create an order for this kartu -->
-    <h2>Isi Kartu Order</h2>
+    {{-- <h2>Isi Kartu Order</h2>
     <a href="/order/form/{{ $kartu->id }}/{{ $kartuorder->id }}" class="btn btn-primary" >Tambah Alat UTTP</a>
     <a href="/" class="btn btn-primary">Halaman Utama</a>
-    <hr />
+    <hr /> --}}
 
     <!-- Display orders related to this kartu -->
     <h2>Daftar Alat UTTP</h2>
@@ -73,8 +73,8 @@
                         <td>{{ $order->jumlah_at }}</td>
                         <td>{{ $order->keterangan }}</td>
                         <td> 
-                            {{-- <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a> --}}
-                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a>
+                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>
+                            {{-- <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a> --}}
                         </td>
                     </tr>
                 @endforeach

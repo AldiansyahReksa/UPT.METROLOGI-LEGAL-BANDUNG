@@ -26,8 +26,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/kartu/form">Isi Formulir Pemilik </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/kartu/find">Lihat Kartu Order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pengujian">Pengujian</a>
             </li>
           </ul>
         </div>

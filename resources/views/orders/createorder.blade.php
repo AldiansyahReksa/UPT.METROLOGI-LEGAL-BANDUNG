@@ -38,7 +38,7 @@
 
     <div class="mb-3">
       <label for="jenis_alat_uttp" class="form-label">Jenis Alat UTTP</label>
-      <input type="text" class="form-control  @error('jenis_alat_uttp') is-invalid @enderror" id="jenis_alat_uttp" name="jenis_alat_uttp" value="{{ old('jenis_alat_uttp') }}" placeholder="jenis alat uttp">
+      <input type="text" class="form-control  @error('jenis_alat_uttp') is-invalid @enderror" id="jenis_alat_uttp" name="jenis_alat_uttp" value="{{ old('jenis_alat_uttp') }}" placeholder="Jenis Alat UTTP">
       <div class="@error('jenis_alat_uttp') @enderror invalid-feedback">
         @foreach ($errors->get('jenis_alat_uttp') as $message)
         {{ $message }}
@@ -77,8 +77,8 @@
     </div>
 
     <div class="mb-3">
-    <label for="kapasitas" class="form-label">kapasitas (gram)</label>
-    <input type="text" class="form-control  @error('kapasitas') is-invalid @enderror" id="kapasitas" name="kapasitas" value="{{ old('kapasitas') }}" placeholder="kapasitas">
+    <label for="kapasitas" class="form-label">Kapasitas (gram)</label>
+    <input type="text" class="form-control  @error('kapasitas') is-invalid @enderror" id="kapasitas" name="kapasitas" value="{{ old('kapasitas') }}" placeholder="Kapasitas">
     <div class="@error('kapasitas') @enderror invalid-feedback">
         @foreach ($errors->get('kapasitas') as $message)
         {{ $message }}
@@ -88,7 +88,7 @@
 
 <div class="mb-3">
     <label for="skala" class="form-label">Skala (gram)</label>
-    <input type="text" class="form-control  @error('skala') is-invalid @enderror" id="skala" name="skala" value="{{ old('skala') }}" placeholder="skala">
+    <input type="text" class="form-control  @error('skala') is-invalid @enderror" id="skala" name="skala" value="{{ old('skala') }}" placeholder="Skala">
     <div class="@error('skala') @enderror invalid-feedback">
         @foreach ($errors->get('skala') as $message)
         {{ $message }}
