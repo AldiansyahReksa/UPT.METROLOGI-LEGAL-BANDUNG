@@ -24,6 +24,6 @@ Route::get('/order/print/{kartu_id}/{kartuorder_id}/{order_id}', [OrderControlle
 Route::get('/order/{id}', [OrderController::class, 'getById']);
 Route::get('/order/form/{kartu_id}/{kartuorder_id}', [OrderController::class, 'formInsert'])->name('order.form');
 
-Route::get('/pengujian', [PengujianController::class, 'index']);
+Route::get('/pengujian', [PengujianController::class, 'index'])->name('pengujian');
 Route::get('/pengujian/{kartu_id}/{kartuorder_id}', [PengujianController::class, 'getById']);
 

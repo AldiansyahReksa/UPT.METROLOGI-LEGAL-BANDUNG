@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <th scope="row">Nomor Kartu Order</th>
-                <td>{{ $kartuorder->id }}</td>
+                <td>{{ $kartuorder->formatted_id }}</td>
             </tr>
             <tr>
                 <th scope="row">Tanggal</th>
