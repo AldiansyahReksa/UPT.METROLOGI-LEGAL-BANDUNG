@@ -41,6 +41,7 @@
         tab {
         display: inline-block;
         margin-left: 25px;
+        vertical-align: middle;
         }
         #top {
         vertical-align: top;
@@ -64,6 +65,38 @@
         color: red;
         }
 
+        .oval-border {
+            display: inline-block;
+            border: 1px solid #000;  /* Border color */
+            border-radius: 50%;     /* Perfect oval shape */
+            padding: 1px 10px;     /* Vertical and horizontal padding */
+            text-align: center;     /* Center the text */
+            font-size: 14px;        /* Font size */
+            line-height: 1.5;       /* Adjust based on font size for vertical centering */
+            vertical-align: middle;
+        }
+
+        #tengah{
+            vertical-align: middle;
+        }
+
+        .pentagon {
+    width: 40px;
+    height: 36px;
+    background: #3498db;  /* Color for the pentagon */
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    position: relative;
+}
+
+.year {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Color for the year text */
+    font-size: 12px;
+}
+
         
 
     </style>
@@ -73,7 +106,7 @@
 <body>
     <div id=halaman>
         <div id="judul"><u>SURAT KETERANGAN HASIL PENGUJIAN</u></div>
-        <div id="nomor">Nomor. PG.05.05/2535/VI/2023</div>
+        <div id="nomor">Nomor. PG.05.05/{{ $kartuorder->formatted_id }}/{{ $kartuorder->numberToRoman($kartuorder->created_at->month) }}/{{ $order->created_at ? $order->created_at->isoformat('Y') : '' }}</div>
         <br> <br> <br>
         <table border="0"  width="100%">
             <tr>
@@ -93,13 +126,13 @@
             </tr>
             <tr>
                 <td colspan="3">Nama Alat <br> <div id="translate">Meassuring Instrument</div> </td>
-                <td colspan="6">:<tab>{{ $order->jenis_alat_uttp }}</td>
-                <td class="outlined" colspan="3">Nomor Order : 01089</td>
+                <td colspan="6">:<tab>{{ strtoupper($order->jenis_alat_uttp) }}</td>
+                <td class="outlined" colspan="3">Nomor Order : {{ $kartuorder->formatted_id }}</td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Merk / Buatan <br> <div id="translate">Trade Mark / Manufactured by</div> </td>
-                <td colspan="4">:<tab>{{ $order->merek }} </td>
+                <td colspan="4">:<tab>{{ strtoupper($order->merek) }} </td>
                 <td colspan="4"> </td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
@@ -113,19 +146,25 @@
                 <td colspan="4"><tab>Nomor Seri <br> <div id="translate">Serial Number</div> </td>
                 <td colspan="4">:<tab>{{ $order->nomor_seri }}</td>
                 <td colspan="2"><tab>Kelas<br> <div id="translate">Class</div> </td>
-                <td colspan="2">:  {{ $order->kelas }}</td>
+                <td colspan="2"><span id="tengah">:</span>&nbsp;
+                    @php
+                        $words = explode(' ', $order->kelas);
+                        $lastWord = end($words);
+                    @endphp
+                    <span class="oval-border">{{ $lastWord }}</span>
+                </td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Kapasitas / Massa Nominal <br> <div id="translate">Capacity / Nominal Mass</div> </td>
-                <td colspan="4">:<tab>{{ $order->kapasitas }}</td>
+                <td colspan="4">:<tab>{{ $order->kapasitas }} g</td>
                 <td colspan="2"><tab>Daya Baca <br> <div id="translate">Readdabilty</div> </td>
-                <td colspan="2">: {{ $order->skala }}</td>
+                <td colspan="2">: {{ $order->skala }} g</td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="4"><tab>Pemakai<br> <div id="translate">Owner / User</div> </td>
-                <td colspan="4">:<tab>{{ $kartu->pemilik_uttp }} </td>
+                <td colspan="4">:<tab><b>{{ strtoupper($kartu->pemilik_uttp) }}</b> </td>
                 <td colspan="4"> </td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
@@ -151,7 +190,7 @@
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="3"><tab>Standar<br> <div id="translate">   Standard</div> </td>
-                <td colspan="9">:<tab>Anak Timbangan Standar Kelas M1</td>
+                <td colspan="9">:<tab>Anak Timbangan Standar Kelas {{$kelas}}</td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
@@ -166,20 +205,26 @@
                 <td colspan="9"></td>
             </tr>
             <tr>
-                <td colspan="12"><tab>Disahkan pada Tera Ulang Tahun 2023 berdasarkan Undang-Undang Republik Indonesia Nomor 2
-                    Tahun 1981 tentang Metrologi Legal, dengan dibubuhi tanda tera sah berupa angka 23 dalam segi lima
-                    beraturan</td>
+                <td colspan="12"><tab>Disahkan pada Tera Ulang Tahun {{ $order->created_at ? $order->created_at->isoformat('Y') : '' }} berdasarkan Undang-Undang Republik Indonesia Nomor 2
+                    Tahun 1981 tentang Metrologi Legal, dengan dibubuhi tanda tera sah berupa angka {{ $order->created_at ? $order->created_at->format('y') : '' }} dalam segi lima
+                    beraturan 
+                    <svg width="40" height="36" viewBox="0 0 40 36" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Define only the stroke/border and no fill for the polygon -->
+                        <polygon points="20,0 40,14 32,36 8,36 0,14" fill="none" stroke="#3498db" stroke-width="1"/>
+                        <text x="50%" y="50%" font-size="12" fill="black" dy=".3em" text-anchor="middle">23</text>
+                    </svg>
+                </td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="6">Surat Keterangan Hasil Pengujian ini berlaku sampai dengan :<br> <div id="translate">This certivicate is valid until</div> </td>
-                <td id="top" colspan="6">Juni 2024</td>
+                <td id="top" colspan="6"><b>{{ strtoupper($order->created_at->addYear()->isoformat('MMMM Y')) }}</b></td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="7"></td>
-                <td class="ttd" colspan="5">Bandung, 27 Juni 2023</td>
+                <td class="ttd" colspan="5">Bandung, {{ $kartuorder->created_at ? $kartuorder->created_at->isoformat('D MMMM Y') : '' }}</td>
             </tr>
             <tr>
                 <td colspan="7"></td>
