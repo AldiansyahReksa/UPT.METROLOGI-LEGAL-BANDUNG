@@ -15,12 +15,13 @@ class PengujianController extends Controller
   public function index(Request $request)
   {
       $search = $request->get('search');
+      $numericSearch = intval($search);
       if ($search) {
-          $kartu_order = KartuOrder::where('id', 'like', "%{$search}%")
-                          ->orWhereHas('kartu', function($query) use ($search) {
-                              $query->where('pemilik_uttp', 'like', "%{$search}%");
-                          })
-                          ->get();
+        $kartu_order = KartuOrder::where('id', $numericSearch)
+                ->orWhereHas('kartu', function($query) use ($search) {
+                    $query->where('pemilik_uttp', 'like', "%{$search}%");
+                })
+                ->get();
       } else {
           $kartu_order = KartuOrder::all();
       }
@@ -48,6 +49,20 @@ class PengujianController extends Controller
         $kartuorder = KartuOrder::findOrFail($kartuorder_id);
 
           return view('pengujians.listorder', ['kartu' => $kartu], ['kartuorder' => $kartuorder]);
+      } catch (ModelNotFoundException $exception) {
+          // If kartu with the given ID is not found, handle the error
+          return back()->with('error', 'Kartu not found!');
+      }
+  }
+
+  public function uji($kartu_id,$kartuorder_id,$id)
+  {
+      try {
+        $kartu = Kartu::findOrFail($kartu_id);
+        $kartuorder = KartuOrder::findOrFail($kartuorder_id);
+        $order = Order::findOrFail($id);
+
+        return view('pengujians.formuji', ['kartu' => $kartu, 'kartuorder' => $kartuorder, 'order' => $order]);
       } catch (ModelNotFoundException $exception) {
           // If kartu with the given ID is not found, handle the error
           return back()->with('error', 'Kartu not found!');

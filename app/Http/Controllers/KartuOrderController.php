@@ -97,4 +97,26 @@ class KartuOrderController extends Controller
     
         return view('kartuorders.createkartuorder', compact('kartu'));
     }
+
+    public function find(Request $request)
+    {
+        $search = $request->get('search');
+        if ($search) {
+            $kartu_order = KartuOrder::where('id', 'like', "%{$search}%")
+                            ->orWhereHas('kartu', function($query) use ($search) {
+                                $query->where('pemilik_uttp', 'like', "%{$search}%");
+                            })
+                            ->get();
+        } else {
+            $kartu_order = KartuOrder::all();
+        }
+    
+        // If AJAX request, return only the table
+        if ($request->ajax()) {
+            return view('orders.ordertable', ['kartu_order' => $kartu_order])->render();
+        }
+    
+        // Otherwise, return the full view
+        return view('orders.find', ['kartu_order' => $kartu_order]);
+    }
 }

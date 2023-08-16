@@ -1,11 +1,12 @@
 <x-bootstrap>
     <x-slot name="title">
-        Detail Kartu Order
+        Form Pengujian
     </x-slot>
 
     <!-- Display the kartu details -->
 
 
+    <h4>Detail Pemilik</h4>
     <table class="table">
         <tbody>
             <tr>
@@ -40,9 +41,44 @@
     <hr /> --}}
 
     <!-- Display orders related to this kartu -->
-    <h2>Daftar Alat UTTP</h2>
+    <h4>Detail Alat UTTP</h4>
 
-    @if (count($kartuorder->orders) > 0)
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Jenis Alat UTTP</th>
+                <td>{{ $order->jenis_alat_uttp }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Merek</th>
+                <td>{{ $order->merek }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Tipe atau Model</th>
+                <td>{{ $order->tipe_atau_model }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nomor Seri</th>
+                <td>{{ $order->nomor_seri }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Kapasitas</th>
+                <td>{{ $order->kapasitas }} x {{ $order->skala }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Kelas</th>
+                <td>{{ $order->kelas }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Jenis Pengukuran</th>
+                <td>{{ $order->jenis_pengukuran }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    {{-- @if (count($kartuorder->orders) > 0)
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -73,8 +109,8 @@
                         <td>{{ $order->jumlah_at }}</td>
                         <td>{{ $order->keterangan }}</td>
                         <td> 
-                            <a href="/pengujian/{{ $kartu->id }}/{{$kartuorder->id}}/{{$order->id}}" class="btn btn-success btn-sm">Uji</a>
-                            {{-- <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a> --}}
+                            <a href="/pengujian/{{ $kartu->id }}/{{$kartuorder->id}}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>
+                          
                         </td>
                     </tr>
                 @endforeach
@@ -82,5 +118,5 @@
         </table>
     @else
         <p>Empty Data</p>
-    @endif
+    @endif --}}
 </x-bootstrap>
