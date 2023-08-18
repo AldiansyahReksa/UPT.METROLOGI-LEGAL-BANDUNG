@@ -73,50 +73,61 @@
                 <th scope="row">Jenis Pengukuran</th>
                 <td>{{ $order->jenis_pengukuran }}</td>
             </tr>
+            <tr>
+                <th scope="row">Minimum Menimbang</th>
+                <td>{{ $minimum_menimbang }}</td>
+            </tr>
         </tbody>
     </table>
 
     <hr>
 
-    {{-- @if (count($kartuorder->orders) > 0)
-        <table class="table table-striped">
+
+        <table class="table table-striped text-center">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Jenis Alat UTTP</th>
-                    <th scope="col">Merek</th>
-                    <th scope="col">Tipe Atau Model</th>
-                    <th scope="col">Nomor Seri</th>
-                    <th scope="col">Kapasitas</th>
-                    <th scope="col">Kelas</th>
-                    <th scope="col">Jenis Pengukuran</th>
-                    <th scope="col">Jumlah AT</th>
-                    <th scope="col">Keterangan</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col">Standar</th>
+                    <th scope="col" class="col-4">Penunjukan Alat</th>
+                    <th scope="col">Kesalahan Alat</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($kartuorder->orders as $order)
-                    <tr>
-                        <th scope="row">{{ $order->id }}</th>
-                        <td>{{ $order->jenis_alat_uttp }}</td>
-                        <td>{{ $order->merek }}</td>
-                        <td>{{ $order->tipe_atau_model }}</td>
-                        <td>{{ $order->nomor_seri }}</td>
-                        <td>{{ $order->kapasitas }} x {{ $order->skala }} </td>
-                        <td>{{ $order->kelas }}</td>
-                        <td>{{ $order->jenis_pengukuran }}</td>
-                        <td>{{ $order->jumlah_at }}</td>
-                        <td>{{ $order->keterangan }}</td>
-                        <td> 
-                            <a href="/pengujian/{{ $kartu->id }}/{{$kartuorder->id}}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>
-                          
-                        </td>
-                    </tr>
-                @endforeach
+                
+                <tr>
+                    <td>0</td>
+                    <td>
+                        <input type="number" name="penunjukanzero" class="form-control" placeholder="penunjukan">
+                    </td>
+                    <td></td>
+                </tr> 
+                <tr>
+                    <td>{{ $minimum_menimbang }}</td>
+                    <td>
+                        <input type="number" name="penunjukanminimum" class="form-control" placeholder="penunjukan">
+                    </td>    
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>{{ $bkd1 }}</td>
+                    <td>
+                        <input type="number" name="penunjukanbkd1" class="form-control" placeholder="penunjukan">
+                    </td>
+                    <td></td>
+                </tr>    
+                <tr>
+                    <td>{{ $bkd2 }}</td>
+                    <td>
+                        <input type="number" name="penunjukanbkd2" class="form-control" placeholder="penunjukan">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>{{ $bkd3 }}</td>
+                    <td>
+                        <input type="number" name="penunjukanbkd3" class="form-control" placeholder="penunjukan">
+                    </td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
-    @else
-        <p>Empty Data</p>
-    @endif --}}
 </x-bootstrap>
