@@ -28,7 +28,7 @@
               <a class="nav-link" href="/kartu/form">Isi Formulir Pemilik </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/kartu/find">Lihat Kartu Order</a>
+              <a class="nav-link" href="/kartuorder/find">Cari Kartu Order</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/pengujian">Pengujian</a>

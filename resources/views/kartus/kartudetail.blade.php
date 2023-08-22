@@ -59,7 +59,7 @@
             <tbody>
                 @foreach ($kartu->Kartuorders as $kartuorder)
                     <tr>
-                        <th scope="row">{{ $kartuorder->id }}</th>
+                        <th scope="row">{{ $kartuorder->formatted_id }}</th>
                         <td>{{ $kartuorder->created_at ? $kartuorder->created_at->isoformat('D MMMM Y') : '' }}</td>
 
                         <td> 

@@ -1,6 +1,6 @@
 <x-bootstrap>
     <x-slot name="title">
-        Pengujian
+        Cari Kartu Order
     </x-slot>
 
     
@@ -18,7 +18,7 @@
     </form>
 
     <div id="search-result">
-        @include('pengujians.ordertable', ['kartu_order' => $kartu_order])
+        @include('orders.ordertable', ['kartu_order' => $kartu_order])
     {{-- @if (count($kartu_order) > 0)
         <table class="table table-striped">
             <thead>
@@ -61,7 +61,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: '{{ route('pengujian') }}',
+                url: '{{ route('kartuorder') }}',
                 data: {search: searchTerm},
                 success: function(data) {
                     $('#search-result').html(data);

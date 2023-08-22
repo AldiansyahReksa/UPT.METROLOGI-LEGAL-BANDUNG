@@ -104,12 +104,25 @@ public function insertWithModel(Request $request)
         return view('orders.index', ['orders' => $orders]);
     }
 
-    public function cetak_pdf($kartu_id,$id)
+    public function cetak_pdf($kartu_id,$kartuorder_id,$id)
     {
         $kartu = Kartu::find($kartu_id);
+        $kartuorder = KartuOrder::find($kartuorder_id);
     	$order = Order::find($id);
+
+        $kelas = $order->kelas;
+        if ($order->kelas == 'Kelas II') {
+            $kelas = 'M1';
+        } elseif ($order->kelas == 'Kelas III' || $order->kelas == 'Kelas IIII') {
+            $kelas = 'M2';
+        }
  
-    	$pdf = PDF::loadview('orders/detail_pdf',['order' => $order],['kartu' => $kartu]);
+    	$pdf = PDF::loadview('orders/detail_pdf', [
+            'order' => $order,
+            'kartu' => $kartu,
+            'kartuorder' => $kartuorder,
+            'kelas' => $kelas
+        ]);
         $pdf->setPaper('legal', 'potrait');
     	return $pdf->download('SKHP.pdf');
     }

@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <th scope="row">Nomor Kartu Order</th>
-                <td>{{ $kartuorder->id }}</td>
+                <td>{{ $kartuorder->formatted_id }}</td>
             </tr>
             <tr>
                 <th scope="row">Tanggal</th>
@@ -73,7 +73,7 @@
                         <td>{{ $order->jumlah_at }}</td>
                         <td>{{ $order->keterangan }}</td>
                         <td> 
-                            <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>
+                            <a href="/pengujian/{{ $kartu->id }}/{{$kartuorder->id}}/{{$order->id}}" class="btn btn-success btn-sm">Uji</a>
                             {{-- <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a> --}}
                         </td>
                     </tr>
