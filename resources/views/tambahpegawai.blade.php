@@ -1,6 +1,8 @@
-@extends('homemenu')
+<x-pegawai>
+    <x-slot name="title">
+        Tambah Pegawai
+    </x-slot>
 
-@section('konten')
 <h3>Form Input Pegawai</h3>
 <form method="post" action="{{route('simpanpegawai')}}">
   @csrf
@@ -36,4 +38,5 @@
     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Data</button>
   </div>
 </form>
-@endsection
+
+</x-pegawai>

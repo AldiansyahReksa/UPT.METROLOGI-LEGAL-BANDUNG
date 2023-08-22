@@ -14,7 +14,6 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
 Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 Route::get('pegawai/tampil', [PegawaiController::class, 'tampilpegawai'])->name('tampilpegawai')->middleware('auth');
 Route::get('pegawai/tambah', [PegawaiController::class, 'tambahpegawai'])->name('tambahpegawai')->middleware('auth');
@@ -26,6 +25,7 @@ Route::get('pegawai/hapus/{id_pegawai}', [PegawaiController::class, 'hapuspegawa
 Route::post('register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
 Route::get('register', [RegisterController::class, 'register'])->name('register');
 
+Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 Route::get('/index', [KartuController::class, 'index'])->name('index');
 Route::post('/kartu/with-model', [KartuController::class, 'insertWithModel']);

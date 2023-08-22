@@ -9,8 +9,7 @@ class PegawaiController extends Controller
 {
     public function tampilPegawai()
     {
-        $pegawai = PegawaiModel::select('*')
-                ->get();
+        $pegawai = PegawaiModel::all();
                 
         return view('tampilpegawai', ['pegawai' => $pegawai]);
     }

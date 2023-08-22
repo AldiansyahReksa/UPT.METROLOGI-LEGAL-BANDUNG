@@ -1,8 +1,8 @@
-@extends('homemenu')
-
-@section('konten')
-<h3>Tampil Data Pegawai</h3>
-<a class="btn btn-success" href="/pegawai/tambah"><i class="fa fa-plus"></i> Tambah Pegawai</a><br><br>
+<x-pegawai>
+    <x-slot name="title">
+        Data Pegawai
+    </x-slot>
+    
 <table class="table table-bordered table-hover">
   <tr>
     <th>#ID</th>
@@ -32,4 +32,4 @@
   </tr>
   @endforeach
 </table>
-@endsection
+</x-pegawai>

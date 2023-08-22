@@ -26,18 +26,12 @@
               <a class="nav-link active" aria-current="page" href="/home">Halaman Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/index">Halaman Form</a>
+              <a class="nav-link active" aria-current="page" href="/pegawai/tampil">Halaman Pegawai</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/kartu/form">Isi Formulir Pemilik </a>
+              <a class="nav-link" href="/pegawai/tambah">Tambah Pegawai </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/kartuorder/find">Cari Kartu Order</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/pengujian">Pengujian</a>
-          </ul>
-        </div>
+
     </nav>
     <h1 class="mb-2">{{ $title }}</h1>
     <hr />
