@@ -48,4 +48,5 @@ Route::get('/order/form/{kartu_id}/{kartuorder_id}', [OrderController::class, 'f
 Route::get('/pengujian', [PengujianController::class, 'index'])->name('pengujian');
 Route::get('/pengujian/{kartu_id}/{kartuorder_id}', [PengujianController::class, 'getById']);
 Route::get('/pengujian/{kartu_id}/{kartuorder_id}/{order_id}', [PengujianController::class, 'uji']);
+Route::post('/pengujian/aksipengujian', [PengujianController::class, 'aksiPengujian']);
 

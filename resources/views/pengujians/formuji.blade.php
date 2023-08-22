@@ -82,52 +82,62 @@
 
     <hr>
 
-
+<form method="POST" action="/pengujian/aksipengujian">
+    @csrf
         <table class="table table-striped text-center">
             <thead>
                 <tr>
                     <th scope="col">Standar</th>
                     <th scope="col" class="col-4">Penunjukan Alat</th>
-                    <th scope="col">Kesalahan Alat</th>
                 </tr>
             </thead>
             <tbody>
                 
                 <tr>
-                    <td>0</td>
+                    <td><input type="text" name="zero" class="form-control text-center" value="0" readonly></td>
                     <td>
                         <input type="number" name="penunjukanzero" class="form-control" placeholder="penunjukan">
                     </td>
-                    <td></td>
                 </tr> 
                 <tr>
-                    <td>{{ $minimum_menimbang }}</td>
+                    <td><input type="text" name="minimum" class="form-control text-center" value="{{ $minimum_menimbang }}" readonly></td>
                     <td>
                         <input type="number" name="penunjukanminimum" class="form-control" placeholder="penunjukan">
                     </td>    
-                    <td></td>
                 </tr>
                 <tr>
-                    <td>{{ $bkd1 }}</td>
+                    <td><input type="text" name="bkd1" class="form-control text-center" value="{{ $bkd1 }}" readonly></td>
                     <td>
                         <input type="number" name="penunjukanbkd1" class="form-control" placeholder="penunjukan">
                     </td>
-                    <td></td>
+
                 </tr>    
                 <tr>
-                    <td>{{ $bkd2 }}</td>
+                    <td><input type="text" name="bkd2" class="form-control text-center" value="{{ $bkd2 }}" readonly></td>
                     <td>
                         <input type="number" name="penunjukanbkd2" class="form-control" placeholder="penunjukan">
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
-                    <td>{{ $bkd3 }}</td>
+                    <td><input type="text" name="bkd3" class="form-control text-center" value="{{ $bkd3 }}" readonly></td>
                     <td>
                         <input type="number" name="penunjukanbkd3" class="form-control" placeholder="penunjukan">
                     </td>
-                    <td></td>
                 </tr>
             </tbody>
         </table>
+        <button type="submit" class="btn btn-primary float-right">Submit</button>
+</form>
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
 </x-bootstrap>
