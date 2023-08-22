@@ -160,12 +160,6 @@
         updateKelasAndHasilSkala();
     });
 </script>
-
-
-
-
-
-
     <div class="mb-3">
   <label for="jenis_pengukuran" class="form-label">Jenis Pengukuran</label>
   <select class="form-select @error('jenis_pengukuran') is-invalid @enderror" id="jenis_pengukuran" name="jenis_pengukuran">

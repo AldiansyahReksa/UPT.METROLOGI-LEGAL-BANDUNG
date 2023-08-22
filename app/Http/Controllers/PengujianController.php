@@ -192,5 +192,45 @@ private function finalbkd3($htgbkd2, $htgbkd3, $kapasitas)
     }
 }
 
+public function aksiPengujian(Request $request)
+{   
+    //dd($request->all());
+        $bkd3 = $request->input('bkd3');
+        $penunjukanbkd3 = $request->input('penunjukanbkd3');
+        
+        $bkd2 = $request->input('bkd2');
+        $penunjukanbkd2 = $request->input('penunjukanbkd2');
+        
+        $bkd1 = $request->input('bkd1');
+        $penunjukanbkd1 = $request->input('penunjukanbkd1');
+        
+        $minimum = $request->input('minimum');
+        $penunjukanminimum = $request->input('penunjukanminimum');
+        
+        // $zero = $request->input('zero');
+        // $penunjukanzero = $request->input('penunjukanzero');
+
+        if (
+            $this->persenSelisih($penunjukanbkd3, $bkd3, 1.5) &&
+            $this->persenSelisih($penunjukanbkd2, $bkd2, 1) &&
+            $this->persenSelisih($penunjukanbkd1, $bkd1, 0.5) &&
+            $this->persenSelisih($penunjukanminimum, $minimum, 0.5)
+            // $this->persenSelisih($penunjukanzero, $zero, 0.5)
+        ) {
+            return redirect()->back()->with('success', 'All tests passed!');
+        } else {
+            return redirect()->back()->with('error', 'Some tests failed.');
+        }
+
+}
+private function persenSelisih($penunjukanValue, $referenceValue, $allowedPercentageDifference)
+{
+    // Compute the absolute difference as a percentage of the reference value
+    $difference = abs($referenceValue - $penunjukanValue);
+    $percentageDifference = ($difference / $referenceValue) * 100;
+
+    // Check if the percentage difference is within the allowed range
+    return $percentageDifference <= $allowedPercentageDifference;
+}
 
 }
