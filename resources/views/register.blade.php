@@ -18,8 +18,7 @@
                 {{session('message')}}
             </div>
             @endif
-            <form action="/register/actionregister" method="post">
-
+            <form action="{{route('actionregister')}}" method="post">
             @csrf
                 <div class="form-group">
                     <label><i class="fa fa-envelope"></i> Email</label>
@@ -28,6 +27,9 @@
                 <div class="form-group">
                     <label><i class="fa fa-key"></i> Password</label>
                     <input type="password" name="password" class="form-control" placeholder="Password" required="">
+            @error('password')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
                 </div>
                 <div class="form-group">
                     <label><i class="fa fa-user"></i> Nama Pemilik UTTP</label>
