@@ -21,7 +21,7 @@ public function insertWithModel(Request $request)
         'tipe_atau_model' => 'required',
         'nomor_seri' => 'required',
         'kapasitas' => 'required|numeric',
-        'skala' => 'required|numeric|gt:0', // Add the validation for "skala" field
+        'skala' => 'required|numeric', // Add the validation for "skala" field
         'jenis_pengukuran' => 'required',
         'jumlah_at' => 'nullable',
         'keterangan' => 'nullable',
@@ -39,11 +39,11 @@ public function insertWithModel(Request $request)
     $totalKapasitas = $kapasitas / $skala;
 
     if ($totalKapasitas >= 10000) {
-        $kelas = 'Kelas II';
+        $kelas = 'II';
     } else if ($totalKapasitas >= 1000) {
-        $kelas = 'Kelas III';
+        $kelas = 'III';
     } else {
-        $kelas = 'Kelas IIII';
+        $kelas = 'IIII';
     }
 
     $kartu_id = $request->input('kartu_id');
