@@ -1,7 +1,12 @@
-@extends('homemenu')
+<!-- @extends('homemenu')
 
 @section('konten')
-<h3>Ubah Data Pegawai</h3>
+<h3>Ubah Data Pegawai</h3> -->
+<x-pegawai>
+    <x-slot name="title">
+        Data Pegawai
+    </x-slot>
+
   @foreach($pegawai as $p)
     <form method="post" action="/pegawai/update">
       @csrf
@@ -11,24 +16,20 @@
         <input type="text" name="nm_pegawai" value="{{$p->nm_pegawai}}" class="form-control" placeholder="Nama Pegawai" required="">
       </div>
       <div class="form-group">
-        <label>Tempat Lahir</label>
-        <input type="text" name="tmpt_lahir" value="{{$p->tmpt_lahir}}" class="form-control" placeholder="Tempat Lahir" required="">
+        <label>Tempat, Tanggal Lahir</label>
+        <input type="text" name="tmpt_tgl_lahir" value="{{$p->tmpt_tgl_lahir}}" class="form-control" placeholder="Tempat, Tanggal Lahir" required="">
       </div>
       <div class="form-group">
-        <label>Tanggal Lahir</label>
-        <input type="date" name="tgl_lahir" value="{{$p->tgl_lahir}}" class="form-control" placeholder="Tanggal Lahir" required="">
+        <label>NIP</label>
+        <input type="text" name="nip" value="{{$p->nip}}" class="form-control" placeholder="NIP" required="">
       </div>
       <div class="form-group">
-        <label>Alamat</label>
-        <textarea name="alamat" rows="3" class="form-control" placeholder="Alamat" required="">{{$p->alamat}}</textarea>
+        <label>Jabatan</label>
+        <input type="text" name="jabatan" value="{{$p->jabatan}}" class="form-control" placeholder="Jabatan" required="">
       </div>
       <div class="form-group">
-        <label>Divisi</label>
-        <input type="text" name="divisi" value="{{$p->divisi}}" class="form-control" placeholder="Divisi" required="">
-      </div>
-      <div class="form-group">
-        <label>Jenis Kelamin</label>
-        <input type="text" name="jns_kelamin" value="{{$p->jns_kelamin}}" class="form-control" placeholder="Jenis Kelamin" required="">
+        <label>Pangkat</label>
+        <input type="text" name="pangkat" value="{{$p->pangkat}}" class="form-control" placeholder="Pangkat" required="">
       </div>
       <div class="form-group">
         <label>Email</label>
@@ -38,5 +39,6 @@
         <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Update Data</button>
       </div>
     </form>
-  @endforeach
-@endsection
+    @endforeach
+  </x-pegawai>
+<!-- @endsection -->

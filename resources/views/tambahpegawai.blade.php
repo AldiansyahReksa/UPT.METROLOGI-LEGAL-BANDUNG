@@ -11,28 +11,24 @@
     <input type="text" name="nm_pegawai" class="form-control" placeholder="Nama Pegawai" required="">
   </div>
   <div class="form-group">
-    <label>Tempat Lahir</label>
-    <input type="text" name="tmpt_lahir" class="form-control" placeholder="Tempat Lahir" required="">
+    <label>Tempat, Tanggal Lahir</label>
+    <input type="text" name="tmpt_tgl_lahir" class="form-control" placeholder="Tempat, Tanggal Lahir">
   </div>
   <div class="form-group">
-    <label>Tanggal Lahir</label>
-    <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" required="">
+    <label>NIP</label>
+    <input type="text" name="nip" class="form-control" placeholder="NIP" required="">
   </div>
   <div class="form-group">
-    <label>Alamat</label>
-    <textarea name="alamat" rows="3" class="form-control" placeholder="Alamat" required=""></textarea>
+    <label>Jabatan</label>
+    <input type="text" name="jabatan" class="form-control" placeholder="Jabatan" required="">
   </div>
   <div class="form-group">
-    <label>Divisi</label>
-    <input type="text" name="divisi" class="form-control" placeholder="Divisi" required="">
-  </div>
-  <div class="form-group">
-    <label>Jenis Kelamin</label>
-    <input type="text" name="jns_kelamin" class="form-control" placeholder="Jenis Kelamin" required="">
+    <label>Pangkat</label>
+    <input type="text" name="pangkat" class="form-control" placeholder="Pangkat" required="">
   </div>
   <div class="form-group">
     <label>Email</label>
-    <input type="text" name="email" class="form-control" placeholder="Email" required="">
+    <input type="text" name="email" class="form-control" placeholder="Email">
   </div>
   <div class="form-group text-right">
     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Data</button>
