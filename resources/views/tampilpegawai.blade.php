@@ -7,11 +7,10 @@
   <tr>
     <th>#ID</th>
     <th>Nama Pegawai</th>
-    <th>Tempat Lahir</th>
-    <th>Tanggal Lahir</th>
-    <th>Alamat</th>
-    <th>Divisi</th>
-    <th>Jenis Kelamin</th>
+    <th>Tempat, Tanggal Lahir</th>
+    <th>NIP</th>
+    <th>Jabatan</th>
+    <th>Pangkat</th>
     <th>Email</th>
     <th>Aksi</th>
   </tr>
@@ -19,14 +18,13 @@
   <tr>
     <td>{{$p->id}}</td>
     <td>{{$p->nm_pegawai}}</td>
-    <td>{{$p->tmpt_lahir}}</td>
-    <td>{{$p->tgl_lahir}}</td>
-    <td>{{$p->alamat}}</td>
-    <td>{{$p->divisi}}</td>
-    <td>{{$p->jns_kelamin}}</td>
+    <td>{{$p->tmpt_tgl_lahir}}</td>
+    <td>{{$p->nip}}</td>
+    <td>{{$p->jabatan}}</td>
+    <td>{{$p->pangkat}}</td>
     <td>{{$p->email}}</td>
     <td>
-      <a href="/pegawai/ubah/{{$p->id}}" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+      <a href="/pegawai/ubah/{{$p->id}}" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
       <a href="/pegawai/hapus/{{$p->id}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
     </td>
   </tr>

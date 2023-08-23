@@ -21,13 +21,13 @@ class PegawaiController extends Controller
 
     public function simpanpegawai(Request $request)
     {
+        // dd($request->all());
         $pegawai = PegawaiModel::create([
             'nm_pegawai' => $request->nm_pegawai,
-            'tmpt_lahir' => $request->tmpt_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
-            'alamat' => $request->alamat,
-            'divisi' => $request->divisi,
-            'jns_kelamin' => $request->jns_kelamin,
+            'tmpt_tgl_lahir' => $request->tmpt_tgl_lahir,
+            'nip' => $request->nip,
+            'jabatan' => $request->jabatan,
+            'pangkat' => $request->pangkat,
             'email' => $request->email,
         ]);
 
@@ -47,11 +47,10 @@ class PegawaiController extends Controller
    $pegawai = PegawaiModel::where('id', $request->id)
              ->update([
                     'nm_pegawai' => $request->nm_pegawai,
-                    'tmpt_lahir' => $request->tmpt_lahir,
-                    'tgl_lahir' => $request->tgl_lahir,
-                    'alamat' => $request->alamat,
-                    'divisi' => $request->divisi,
-                    'jns_kelamin' => $request->jns_kelamin,
+                    'tmpt_tgl_lahir' => $request->tmpttgllahir,
+                    'nip' => $request->nip,
+                    'jabatan' => $request->jabatan,
+                    'pangkat' => $request->pangkat,
                     'email' => $request->email,
              ]);
 
