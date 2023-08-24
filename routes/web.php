@@ -31,6 +31,8 @@ Route::get('/index', [KartuController::class, 'index'])->name('index');
 Route::post('/kartu/with-model', [KartuController::class, 'insertWithModel']);
 Route::get('/kartu/form', [KartuController::class, 'formInsert']);
 Route::get('/kartu/{id}', [KartuController::class, 'getById']);
+Route::get('/kartu/delete/{id}', [KartuController::class, 'delete'])->name('kartu.delete');
+
 
 Route::get('/kartuorder/form/{kartu_id?}', [KartuOrderController::class, 'formInsert'])->name('kartuorder.form');
 Route::post('/kartuorder/with-model', [KartuOrderController::class, 'insertWithModel']);

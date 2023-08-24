@@ -36,7 +36,7 @@
     <!-- Button to create an order for this kartu -->
     {{-- <h2>Isi Kartu Order</h2>
     <a href="/order/form/{{ $kartu->id }}/{{ $kartuorder->id }}" class="btn btn-primary" >Tambah Alat UTTP</a>
-    <a href="/" class="btn btn-primary">Halaman Utama</a>
+    <a href="/index" class="btn btn-primary">Halaman Utama</a>
     <hr /> --}}
 
     <!-- Display orders related to this kartu -->

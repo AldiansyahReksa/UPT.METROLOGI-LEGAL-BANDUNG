@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +15,8 @@ return new class extends Migration
             $table->unsignedBigInteger('kartu_id');
             $table->timestamps();
             
-            $table->foreign('kartu_id')->references('id')->on('kartus');
+            // Declare the foreign key relationship with cascading delete
+            $table->foreign('kartu_id')->references('id')->on('kartus')->onDelete('cascade');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('kartu_orders');
     }
 };

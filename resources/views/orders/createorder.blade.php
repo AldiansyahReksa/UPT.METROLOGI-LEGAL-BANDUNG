@@ -197,6 +197,6 @@
     <button type="submit" class="btn btn-primary">Submit</button>
     <a href="{{ url('/kartu/' . $kartu->id) }}" class="btn btn-secondary">Kembali</a>
 
-    <a href="/" class="btn btn-primary">Halaman Utama</a>
+    <a href="/index" class="btn btn-primary">Halaman Utama</a>
   </form>
 </x-bootstrap>

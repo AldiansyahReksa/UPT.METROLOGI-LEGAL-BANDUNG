@@ -12,6 +12,7 @@
         <th scope="col">Alamat</th>
         <th scope="col">Kelurahan</th>
         <th scope="col">Kecamatan</th>
+        <th scope="col">Lihat Data / Hapus Data</th>
 
       </tr>
     </thead>
@@ -24,11 +25,17 @@
         <td>{{ $kartu->alamat }}</td>
         <td>{{ $kartu->kelurahan }}</td>
         <td>{{ $kartu->kecamatan }}</td>
-        <td class="text-center">
-          <a href="/kartu/{{ $kartu->id }}">
-            <i class="bi-search"></i>
+        
+        <td>
+          <a href="/kartu/{{ $kartu->id }}" class="btn btn-info btn-sm">
+          Lihat Data
           </a>
-        </td>
+    <a href="{{ route('kartu.delete', ['id' => $kartu->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')">
+        Hapus Data
+    </a>
+</td>
+
+
       </tr>
       
       @endforeach

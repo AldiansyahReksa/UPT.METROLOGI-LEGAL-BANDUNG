@@ -39,7 +39,7 @@
     <!-- Button to create an order for this kartu -->
     <h2>Buat Kartu Order Baru</h2>
     <a href="{{ route('kartuorder.form', ['kartu_id' => $kartu->id]) }}" class="btn btn-primary">Buat Baru</a>
-    <a href="/" class="btn btn-primary">Halaman Utama</a>
+    <a href="/index" class="btn btn-primary">Halaman Utama</a>
     <hr />
 
     <!-- Display orders related to this kartu -->

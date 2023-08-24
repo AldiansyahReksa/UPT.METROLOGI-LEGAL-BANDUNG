@@ -26,8 +26,8 @@
     <td>{{$p->jns_kelamin}}</td>
     <td>{{$p->email}}</td>
     <td>
-      <a href="/pegawai/ubah/{{$p->id}}" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
-      <a href="/pegawai/hapus/{{$p->id}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+      <a href="/pegawai/ubah/{{$p->id}}" class="btn btn-warning btn-sm"><i class="fa fa-pencil">ubah</i></a>
+      <a href="/pegawai/hapus/{{$p->id}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>hapus</a>
     </td>
   </tr>
   @endforeach

@@ -76,4 +76,22 @@ class KartuController extends Controller
 
     return view('kartus.createkartu');
   }
+
+  public function delete($id)
+  {
+      try {
+          $kartu = Kartu::findOrFail($id);
+  
+          // Delete associated kartu_orders records
+          $kartu->kartuOrders()->delete();
+  
+          // Now delete the kartus record
+          $kartu->delete();
+  
+          return redirect('/index')->with('success', 'Data deleted successfully');
+      } catch (ModelNotFoundException $exception) {
+          return back()->with('error', 'Kartu not found');
+      }
+  }
+  
 }
