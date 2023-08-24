@@ -71,7 +71,7 @@
         }
 
         .bottom-table {
-            position: absolute;
+            /* position: absolute; */
             bottom: 0;
             left: 0;
             right: 0;
@@ -131,12 +131,9 @@
                 <td class="outlined" colspan="2">{{ $kartuorder->formatted_id }}</td>
                 <td colspan="1" ></td>
             </tr>
-            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
-            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td id="judul" colspan="12"> KARTU ORDER </td>
             </tr>
-            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             <tr>
                 <td colspan="3">Pemilik UTTP</td>
                 <td colspan="5">:<tab>{{ $kartu->pemilik_uttp }} </td>
@@ -163,7 +160,7 @@
                 <td colspan="4"> </td>
             </tr>
             <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
-            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
+            
             </table>
 
             <table class="konten" border="1" width="100%">
@@ -180,86 +177,54 @@
                     <td width="4%">Jumlah AT</td>
                     <td width="4%">Ket</td>
                 </tr>
+                @php
+                    $rowCount = 0;
+                @endphp
+
                 @foreach ($kartuorder->orders as $order)
+                    @php
+                        $rowCount++;
+                    @endphp
                     <tr>
-                        <th>{{ $order->id }}</th>
+                        <th>{{ $rowCount }}</th>
                         <td>{{ $order->jenis_alat_uttp }}</td>
                         <td>{{ $order->merek }}</td>
                         <td>{{ $order->tipe_atau_model }}</td>
                         <td>{{ $order->nomor_seri }}</td>
                         <td>{{ $order->kapasitas }} x {{ $order->skala }} </td>
-                        <td>{{ $order->kelas }}</td>
+                        <td>
+                            @php
+                                $words = explode(' ', $order->kelas);
+                                $lastWord = end($words);
+                            @endphp
+                            {{ $lastWord }}    
+                        </td>
                         <td></td>
                         <td></td>
                         <td>{{ $order->jumlah_at }}</td>
                         <td>{{ $order->keterangan }}</td>
                     </tr>
-                    @endforeach
-                <tr>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                @endforeach
+
+                @for ($i = $rowCount; $i < 8; $i++)
+                    @php
+                        $rowCount++;
+                    @endphp
+                    <tr>
+                        <th>{{ $rowCount }}</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                @endfor
+
             </table>
 
             <table class="bottom-table" border="0" width="100%">
@@ -308,11 +273,6 @@
                 <td class="ttd" colspan="5">NIP. </td>
                 <td colspan="7"></td>
             </tr>
-            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
-            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
-            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
-            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
-            <tr id="spasi"><td colspan="12">&nbsp;</td></tr>
             
             
         </table>

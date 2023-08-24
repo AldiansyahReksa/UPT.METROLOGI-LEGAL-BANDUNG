@@ -7,6 +7,7 @@ use App\Models\KartuOrder;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class KartuOrderController extends Controller
 {
@@ -119,4 +120,18 @@ class KartuOrderController extends Controller
         // Otherwise, return the full view
         return view('orders.find', ['kartu_order' => $kartu_order]);
     }
+
+    public function cetak_kartuorder($kartu_id,$kartuorder_id)
+    {
+        $kartu = Kartu::find($kartu_id);
+        $kartuorder = KartuOrder::find($kartuorder_id);
+
+    	$pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadview('kartuorders/kartuorder_pdf', [
+            'kartu' => $kartu,
+            'kartuorder' => $kartuorder,
+        ]);
+        $pdf->setPaper('legal', 'landscape');
+    	return $pdf->download('Kartu Order.pdf');
+    }
+
 }
