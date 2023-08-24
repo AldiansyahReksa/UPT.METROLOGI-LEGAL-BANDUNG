@@ -11,10 +11,10 @@ class KartuOrder extends Model
     use HasFactory;
 
     public function kartu()
-{
-    return $this->belongsTo(Kartu::class);
-}
-
+    {
+        return $this->belongsTo(Kartu::class);
+    }
+    
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);

@@ -24,8 +24,8 @@
     <td>{{$p->pangkat}}</td>
     <td>{{$p->email}}</td>
     <td>
-      <a href="/pegawai/ubah/{{$p->id}}" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-      <a href="/pegawai/hapus/{{$p->id}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+      <a href="/pegawai/ubah/{{$p->id}}" class="btn btn-success btn-sm"><i class="fa fa-pencil">Ubah</i></a>
+      <a href="/pegawai/hapus/{{$p->id}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" class="btn btn-danger btn-sm"><i class="fa fa-trash">Hapus</i></a>
     </td>
   </tr>
   @endforeach

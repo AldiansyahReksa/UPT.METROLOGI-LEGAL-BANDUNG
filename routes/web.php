@@ -31,7 +31,6 @@ Route::get('/index', [KartuController::class, 'index'])->name('index');
 Route::post('/kartu/with-model', [KartuController::class, 'insertWithModel']);
 Route::get('/kartu/form', [KartuController::class, 'formInsert']);
 Route::get('/kartu/{id}', [KartuController::class, 'getById']);
-Route::get('/kartu/delete/{id}', [KartuController::class, 'delete'])->name('kartu.delete');
 
 
 Route::get('/kartuorder/form/{kartu_id?}', [KartuOrderController::class, 'formInsert'])->name('kartuorder.form');
@@ -46,6 +45,7 @@ Route::get('/order/form', [OrderController::class, 'formInsert']);
 Route::get('/order/print/{kartu_id}/{kartuorder_id}/{order_id}', [OrderController::class, 'cetak_pdf']);
 Route::get('/order/{id}', [OrderController::class, 'getById']);
 Route::get('/order/form/{kartu_id}/{kartuorder_id}', [OrderController::class, 'formInsert'])->name('order.form');
+Route::get('/kartu/delete/{id}', [KartuController::class, 'delete'])->name('kartu.delete');
 
 Route::get('/pengujian', [PengujianController::class, 'index'])->name('pengujian');
 Route::get('/pengujian/{kartu_id}/{kartuorder_id}', [PengujianController::class, 'getById']);

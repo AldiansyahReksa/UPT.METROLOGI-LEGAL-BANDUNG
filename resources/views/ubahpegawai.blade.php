@@ -1,7 +1,3 @@
-<!-- @extends('homemenu')
-
-@section('konten')
-<h3>Ubah Data Pegawai</h3> -->
 <x-pegawai>
     <x-slot name="title">
         Data Pegawai
@@ -41,4 +37,3 @@
     </form>
     @endforeach
   </x-pegawai>
-<!-- @endsection -->

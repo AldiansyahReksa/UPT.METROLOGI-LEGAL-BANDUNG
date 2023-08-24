@@ -62,10 +62,12 @@
                         <th scope="row">{{ $kartuorder->formatted_id }}</th>
                         <td>{{ $kartuorder->created_at ? $kartuorder->created_at->isoformat('D MMMM Y') : '' }}</td>
 
-                        <td> 
-                            <a href="/kartuorder/{{ $kartu->id }}/{{ $kartuorder->id }}">
-                                <i class="bi-search"></i>
-                            </a>
+                        <td>
+                        <a href="/kartuorder/{{ $kartu->id }}/{{ $kartuorder->id }}" class="btn btn-info btn-sm">
+                        Lihat Data
+                        </a>
+
+   
                             {{-- <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a>
                             <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a> --}}
                         </td>

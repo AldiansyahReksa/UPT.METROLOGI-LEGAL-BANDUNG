@@ -13,9 +13,10 @@ class Kartu extends Model
 {
     use HasFactory;
 
-    public function kartuorders(): HasMany
+    public function kartuOrders()
     {
         return $this->hasMany(KartuOrder::class);
     }
+    
     
 }

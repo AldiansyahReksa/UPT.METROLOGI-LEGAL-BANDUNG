@@ -37,6 +37,7 @@
     <h2>Isi Kartu Order</h2>
     <a href="/order/form/{{ $kartu->id }}/{{ $kartuorder->id }}" class="btn btn-primary" >Tambah Alat UTTP</a>
     <a href="/index" class="btn btn-primary">Halaman Utama</a>
+    <a href="{{ url('/kartu/' . $kartu->id) }}" class="btn btn-secondary">Kembali</a>
     <hr />
 
     <!-- Display orders related to this kartu -->

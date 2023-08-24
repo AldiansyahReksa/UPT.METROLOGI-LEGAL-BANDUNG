@@ -119,4 +119,6 @@ class KartuOrderController extends Controller
         // Otherwise, return the full view
         return view('orders.find', ['kartu_order' => $kartu_order]);
     }
+
+
 }

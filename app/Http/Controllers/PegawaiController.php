@@ -47,7 +47,7 @@ class PegawaiController extends Controller
    $pegawai = PegawaiModel::where('id', $request->id)
              ->update([
                     'nm_pegawai' => $request->nm_pegawai,
-                    'tmpt_tgl_lahir' => $request->tmpttgllahir,
+                    'tmpt_tgl_lahir' => $request->tmpt_tgl_lahir,
                     'nip' => $request->nip,
                     'jabatan' => $request->jabatan,
                     'pangkat' => $request->pangkat,
