@@ -36,7 +36,7 @@ Route::get('/kartu/{id}', [KartuController::class, 'getById']);
 Route::get('/kartuorder/form/{kartu_id?}', [KartuOrderController::class, 'formInsert'])->name('kartuorder.form');
 Route::post('/kartuorder/with-model', [KartuOrderController::class, 'insertWithModel']);
 // Route::get('/kartuorder/form', [KartuOrderController::class, 'formInsert']);
-// Route::get('/order/print/{idkartu}/{id}', [OrderController::class, 'cetak_pdf']);
+Route::get('/kartuorder/print/{kartu_id}/{kartuorder_id}', [KartuOrderController::class, 'cetak_kartuorder']);
 Route::get('/kartuorder/{kartu_id}/{kartuorder_id}', [KartuOrderController::class, 'getById']);
 Route::get('/kartuorder/find', [KartuOrderController::class, 'find'])->name('kartuorder');
 
