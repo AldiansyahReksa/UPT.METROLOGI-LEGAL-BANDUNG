@@ -102,12 +102,13 @@ class KartuOrderController extends Controller
     public function find(Request $request)
     {
         $search = $request->get('search');
+        $numericSearch = intval($search);
         if ($search) {
-            $kartu_order = KartuOrder::where('id', 'like', "%{$search}%")
-                            ->orWhereHas('kartu', function($query) use ($search) {
-                                $query->where('pemilik_uttp', 'like', "%{$search}%");
-                            })
-                            ->get();
+          $kartu_order = KartuOrder::where('id', $numericSearch)
+                  ->orWhereHas('kartu', function($query) use ($search) {
+                      $query->where('pemilik_uttp', 'like', "%{$search}%");
+                  })
+                  ->get();
         } else {
             $kartu_order = KartuOrder::all();
         }
