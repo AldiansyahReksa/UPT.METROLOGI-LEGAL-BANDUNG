@@ -39,11 +39,11 @@ public function insertWithModel(Request $request)
     $totalKapasitas = $kapasitas / $skala;
 
     if ($totalKapasitas >= 10000) {
-        $kelas = 'II';
+        $kelas = 'Kelas II';
     } else if ($totalKapasitas >= 1000) {
-        $kelas = 'III';
+        $kelas = 'Kelas III';
     } else {
-        $kelas = 'IIII';
+        $kelas = 'Kelas IIII';
     }
 
     $kartu_id = $request->input('kartu_id');

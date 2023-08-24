@@ -11,7 +11,7 @@
 <body>
     <div class="container"><br>
         <div class="col-md-6 col-md-offset-3">
-            <h3 class="text-center">FORM REGISTRASI PENGGUNA</h3>
+            <h3 class="text-center">FORM REGISTRASI PEGAWAI</h3>
             <hr>
             @if(session('message'))
             <div class="alert alert-success">
@@ -32,32 +32,27 @@
             @enderror
                 </div>
                 <div class="form-group">
-                    <label><i class="fa fa-user"></i> Nama Pemilik UTTP</label>
-                    <input type="text" name="namapemilikuttp" class="form-control" placeholder="Nama Pemilik UTTP" required="">
+                    <label><i class="fa fa-user"></i> Nama </label>
+                    <input type="text" name="nama" class="form-control" placeholder="Nama" required="">
                 </div>
                 <div class="form-group">
-                    <label><i class="fa fa-home"></i> Alamat</label>
-                    <input type="text" name="alamat" class="form-control" placeholder="Alamat" required="">
+                    <label><i class="fa fa-book"></i> NIP </label>
+                    <input type="text" name="nip" class="form-control" placeholder="NIP" required="">
                 </div>
                 <div class="form-group">
                     <label><i class="fa fa-phone"></i> No. Telp.</label>
                     <input type="text" name= "notelp" class="form-control" placeholder="No. Telp." required="">
                 </div>
                 <div class="form-group">
-                    <label><i class="fa fa-address-book"></i> Kelurahan</label>
-                    <input type="text" name="kelurahan" class="form-control" placeholder="Kelurahan" required="">
-                </div>
-                <div class="form-group">
-                    <label><i class="fa fa-address-book"></i> Kecamatan</label>
-                    <input type="text" name="kecamatan" class="form-control" placeholder="Kecamatan" required="">
-                </div>
-                <div class="form-group">
                     <label><i class="fa fa-address-book"></i> Role</label>
-                    <input type="text" name="role" class="form-control" value="Guest" readonly>
+                    <select name="role" class="form-control">
+                    <option value="Admin">Admin</option>
+                    <option value="Pegawai">Pegawai</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-user"></i> Registrasi</button>
                 <hr>
-                <p class="text-center">Sudah punya akun silahkan <a href="home">Login Disini!</a></p>
+                <p class="text-center">Sudah punya akun? silahkan <a href="home">Login Disini!</a></p>
             </form>
         </div>
     </div>

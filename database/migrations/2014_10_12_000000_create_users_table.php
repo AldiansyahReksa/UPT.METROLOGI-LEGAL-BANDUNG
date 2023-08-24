@@ -20,11 +20,9 @@ return new class extends Migration
             // $table->string('active');
             // $table->rememberToken();
             $table->timestamps();
-            $table->string('namapemilikuttp');
-            $table->string('alamat');
+            $table->string('nama');
+            $table->string('nip');
             $table->string('notelp');
-            $table->string('kelurahan');
-            $table->string('kecamatan');
             $table->string('role');
         });
     }
