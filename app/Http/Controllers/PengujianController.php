@@ -217,9 +217,9 @@ public function aksiPengujian(Request $request)
             $this->persenSelisih($penunjukanminimum, $minimum, 0.5)
             // $this->persenSelisih($penunjukanzero, $zero, 0.5)
         ) {
-            return redirect()->back()->with('success', 'All tests passed!');
+            return redirect()->back()->with('success', 'Alat UTTP Lolos Uji');
         } else {
-            return redirect()->back()->with('error', 'Some tests failed.');
+            return redirect()->back()->with('error', 'Alat UTTP Gagal Uji.');
         }
 
 }
