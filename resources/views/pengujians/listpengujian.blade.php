@@ -61,7 +61,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: '{{ route('pengujian') }}',
+                url: '{{ route("pengujian") }}',
                 data: {search: searchTerm},
                 success: function(data) {
                     $('#search-result').html(data);
