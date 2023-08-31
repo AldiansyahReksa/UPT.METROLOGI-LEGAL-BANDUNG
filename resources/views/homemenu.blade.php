@@ -16,7 +16,7 @@
     <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Home</a>
     <a href="#fitur" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Fitur</a>
     <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white fa fa-user"> {{Auth::user()->namapemilikuttp}}</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white fa fa-user"> {{Auth::user()->nama}}</a>
     <a href="{{route('actionlogout')}}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Log Out</a>
 
 
