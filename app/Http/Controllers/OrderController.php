@@ -124,6 +124,10 @@ public function insertWithModel(Request $request)
             'kelas' => $kelas
         ]);
         $pdf->setPaper('legal', 'potrait');
-    	return $pdf->download('SKHP.pdf');
+
+        $newkartuorder = str_pad($kartuorder_id, 5, '0', STR_PAD_LEFT);
+        $fileName = 'SKHP Depan' . $newkartuorder . '.pdf';
+
+        return $pdf->download($fileName);
     }
 }
