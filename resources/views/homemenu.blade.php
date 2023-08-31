@@ -61,66 +61,6 @@
   </div>
 </div>
 
-<!-- Contact Container -->
-<div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
-  <div class="w3-row">
-    <div class="w3-col m5">
-    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
-      <h3>Address</h3>
-      <p>Swing by for a cup of coffee, or whatever.</p>
-      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  Chicago, US</p>
-      <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>  +00 1515151515</p>
-      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  test@test.com</p>
-    </div>
-
-  </div>
-</div>
-
-<!-- Image of location/map -->
-<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
-  <h4>Follow Us</h4>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
-  <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-
-  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
-    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
-    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
-    <i class="fa fa-chevron-circle-up"></i></span></a>
-  </div>
-</footer>
-
-<script>
-// Script for side navigation
-function w3_open() {
-  var x = document.getElementById("mySidebar");
-  x.style.width = "300px";
-  x.style.paddingTop = "10%";
-  x.style.display = "block";
-}
-
-// Close side navigation
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-
-// Used to toggle the menu on smaller screens when clicking on the menu button
-function openNav() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
-
 </body>
 </html>
 
