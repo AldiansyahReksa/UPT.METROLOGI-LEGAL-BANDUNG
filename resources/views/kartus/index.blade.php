@@ -1,6 +1,6 @@
 <x-bootstrap>
   <x-slot name="title">
-    KARTU ORDER
+    Daftar Pemilik UTTP
   </x-slot>
 
   <table class="table table-striped">

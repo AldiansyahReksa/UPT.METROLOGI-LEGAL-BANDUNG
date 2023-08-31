@@ -116,8 +116,8 @@
                 
             </tr>
             <tr>
-                <td colspan="1" rowspan="2"> <img src="../../../public/img/logobw.png"></td>
-                <td class="kop" colspan="8  " rowspan="2">
+                <!-- <td colspan="1" rowspan="2"> <img src="../../../public/img/logobw.png"></td> -->
+                <td class="kop" colspan="9  " rowspan="2">
                     PEMERINTAH KOTA BANDUNG <br>
                     DINAS PERDAGANGAN DAN PERINDUSTRIAN <br>
                     <span id="kopupt">UPT METROLOGI KOTA BANDUNG</span> <br>
@@ -172,8 +172,7 @@
                     <td width="15.4%">Nomor Seri</td>
                     <td width="15.4%">Kapasitas / e</td>
                     <td width="4%">Kelas</td>
-                    <td width="4%">Tera</td>
-                    <td width="4%">Tera Ulang</td>
+                    <td width="8%">Tera / Tera Ulang</td>
                     <td width="4%">Jumlah AT</td>
                     <td width="4%">Ket</td>
                 </tr>
@@ -199,8 +198,7 @@
                             @endphp
                             {{ $lastWord }}    
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $order->jenis_pengukuran }}</td>
                         <td>{{ $order->jumlah_at }}</td>
                         <td>{{ $order->keterangan }}</td>
                     </tr>
@@ -212,7 +210,6 @@
                     @endphp
                     <tr>
                         <th>{{ $rowCount }}</th>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>

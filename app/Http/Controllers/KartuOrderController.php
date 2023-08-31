@@ -122,19 +122,33 @@ class KartuOrderController extends Controller
         return view('orders.find', ['kartu_order' => $kartu_order]);
     }
 
+<<<<<<< HEAD
 
 
     public function cetak_kartuorder($kartu_id,$kartuorder_id)
+=======
+    public function cetak_kartuorder($kartu_id, $kartuorder_id)
+>>>>>>> a52b53807a962821da1f53783441878e8073c417
     {
         $kartu = Kartu::find($kartu_id);
         $kartuorder = KartuOrder::find($kartuorder_id);
 
-    	$pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadview('kartuorders/kartuorder_pdf', [
-            'kartu' => $kartu,
-            'kartuorder' => $kartuorder,
-        ]);
-        $pdf->setPaper('legal', 'landscape');
-    	return $pdf->download('Kartu Order.pdf');
-    }
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
+            ->loadView('kartuorders.kartuorder_pdf', [
+                'kartu' => $kartu,
+                'kartuorder' => $kartuorder,
+            ]);
 
+            $pdf->getDomPDF()->getOptions()->set('fontDir', public_path('fonts'));
+            $pdf->getDomPDF()->getOptions()->set('defaultFont', 'DejaVuSans');
+            $pdf->getDomPDF()->getOptions()->set('fontCache', public_path('fonts'));
+
+        $pdf->setPaper('legal', 'landscape');
+
+        $newkartuorder = str_pad($kartuorder_id, 5, '0', STR_PAD_LEFT);
+        $fileName = 'Kartu Order ' . $newkartuorder . '.pdf';
+
+        return $pdf->download($fileName);
+
+    }
 }
