@@ -152,6 +152,7 @@ input{
 }
 
 
+/* ... (existing styles) ... */
 
 button{
   cursor:pointer; 
@@ -163,14 +164,15 @@ button{
   border:none;
   font-family: 'Open Sans', sans-serif;
   text-transform:uppercase;
-  color:#fff;
+  color:#000; /* Black font color */
   -webkit-transition:.5s;
   transition:.5s;
   &:nth-of-type(1){
-    background:#673ab7;
+    background:#12B3D6; /* Light Blue */
   }
   &:nth-of-type(2){
-    background:#ff5722;
+    background:#D3D3D3; /* Grey */
+    color: #001; /* Black font color */
   }
   span{
     position:absolute;
@@ -188,6 +190,11 @@ button{
       }
    }
 }
+
+/* ... (existing styles) ... */
+
+
+
 
 .reg{
     position:absolute;
@@ -233,6 +240,11 @@ h3{
   -webkit-transition:.3s ease-in-out 1.2s;
   transition:.3s ease-in-out 1.2s;
 }
+
+.background-text {
+    color: white;
+}
+
     </style>
 </head>
 <body>
@@ -267,7 +279,27 @@ h3{
 <circle fill="url(#SVGID_5_)" cx="435.095" cy="184.986" r="63.504"/>
 </svg>
 <div class="container">
-    <center></BR><h2>Selamat Datang Di UPT METROLOGI LEGAL BANDUNG</h2></center>
+<div style="display: flex; align-items: center; position: relative;">
+<center><h2 class="background-text">Selamat Datang Di UPT METROLOGI LEGAL BANDUNG</h2></center>
+
+</div>
+<style>
+    .background-text::before {
+        content: '';
+        background-image: url('{{ asset('img/1.png') }}');
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.7;
+        z-index: -1;
+    }
+</style>
+
+
     <form action="{{ route('actionlogin') }}" method="post">
         @csrf
         <div class="form-group">

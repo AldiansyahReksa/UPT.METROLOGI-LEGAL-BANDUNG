@@ -122,13 +122,7 @@ class KartuOrderController extends Controller
         return view('orders.find', ['kartu_order' => $kartu_order]);
     }
 
-<<<<<<< HEAD
-
-
-    public function cetak_kartuorder($kartu_id,$kartuorder_id)
-=======
     public function cetak_kartuorder($kartu_id, $kartuorder_id)
->>>>>>> a52b53807a962821da1f53783441878e8073c417
     {
         $kartu = Kartu::find($kartu_id);
         $kartuorder = KartuOrder::find($kartuorder_id);
