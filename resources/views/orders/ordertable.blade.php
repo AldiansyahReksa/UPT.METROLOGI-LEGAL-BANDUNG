@@ -16,8 +16,9 @@
                 <td>{{ $kartuorder->created_at ? $kartuorder->created_at->isoformat('D MMMM Y') : '' }}</td>
                 
                 <td> 
-                    <a href="/kartuorder/{{ $kartuorder->kartu->id }}/{{ $kartuorder->id }}">
-                        <i class="bi-search"></i>
+                    <a href="/kartuorder/{{ $kartuorder->kartu->id }}/{{ $kartuorder->id }}" class="btn btn-info btn-sm">
+          Lihat Data
+          </a>
                     </a>
             
                 </td>

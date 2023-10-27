@@ -30,6 +30,19 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        #halaman2{
+           font-size: 12px;
+            width: 20cm; 
+            height: 34.56cm; 
+            position: absolute; 
+            border: 1px solid; 
+            padding-top: 30px; 
+            padding-left: 30px; 
+            padding-right: 30px; 
+            padding-bottom: 80px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         #translate{
             color: red;
             font-size: 8px;
@@ -106,7 +119,7 @@
 <body>
     <div id=halaman>
         <div id="judul"><u>SURAT KETERANGAN HASIL PENGUJIAN</u></div>
-        <div id="nomor">Nomor. PG.05.05/{{ $kartuorder->formatted_id }}/{{ $kartuorder->numberToRoman($kartuorder->created_at->month) }}/{{ $order->created_at ? $order->created_at->isoformat('Y') : '' }}</div>
+        <div id="nomor">Nomor. PG.05.05/{{ $kartuorder->formatted_id }}.{{ $order->order_number }}/{{ $kartuorder->numberToRoman($kartuorder->created_at->month) }}/{{ $order->created_at ? $order->created_at->isoformat('Y') : '' }}</div>
         <br> <br> <br>
         <table border="0"  width="100%">
             <tr>
@@ -278,6 +291,185 @@
             </tr>
             
         </table>
+    </div>
+
+<div style="page-break-after: always;"></div>
+
+<div id="halaman2">
+        <table border="0" width="100%">
+            <tr>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+                <td width="8.3%"> </td>
+            </tr>
+            <tr>
+                <td colspan="7"> </td>
+                <td colspan="5">
+                    Lampiran SKHP PG.05.05/{{ $kartuorder->formatted_id }}.{{ $order->order_number }}/{{
+                    $kartuorder->numberToRoman($kartuorder->created_at->month) }}/{{ $order->created_at ?
+                    $order->created_at->isoformat('Y') : '' }}
+                </td>
+            </tr>
+            <tr id="spasi">
+                <td colspan="12">&nbsp;</td>
+            </tr>
+            <tr id="spasi">
+                <td colspan="12">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="8">DATA PENGUJIAN TERA / TERA ULANG <br>
+                    <div id="translate">Verification Data</div>
+                </td>
+                <td colspan="4"></td>
+            </tr>
+            <tr id="spasi">
+                <td colspan="12">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <tab>Tanggal ditera / tera ulang<br>
+                </td>
+                <td colspan="9">:<tab> {{ $hasilpengujian->created_at ? $hasilpengujian->created_at->isoformat('D MMMM Y') : '' }}
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <tab>Diuji oleh<br>
+                </td>
+                <td colspan="9">:<tab> Indri Ratna P, S.T., M.AP.
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <tab>Lokasi<br>
+                </td>
+                <td colspan="9">:<tab> Kantor UPT. Metrologi Legal Kota Bandung
+            </tr>
+            <tr id="spasi">
+                <td colspan="12">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <tab>Kondisi Ruangan<br>
+                </td>
+                <td colspan="2">:<tab> Suhu </td>
+                <td colspan="7">:<tab> Ambient C</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+
+                </td>
+                <td colspan="2">:<tab> Kelembaban </td>
+                <td colspan="7">:<tab> Ambient %RH</td>
+            </tr>
+            <tr id="spasi">
+                <td colspan="12">&nbsp;</td>
+            </tr>
+            <tr id="spasi">
+                <td colspan="12">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td colspan="8">Hasil Pengujian <br>
+                    <div id="translate">Result</div>
+                </td>
+                <td colspan="4"></td>
+            </tr>
+            <tr id="spasi">
+                <td colspan="12">&nbsp;</td>
+            </tr>
+            <tr id="spasi">
+                <td colspan="12">&nbsp;</td>
+            </tr>
+
+        </table>
+
+        <table class="outlined" align="center" border="1" cellspacing="0" cellpadding="10" width="360px">
+            <tr bgcolor="lightgrey">
+                <th width="130px">
+                    Standar <br> (g)
+                </th>
+                <th width="130px">
+                    Penunjukan Alat <br> (g)
+                </th>
+                <th width="130px">
+                    Kesalahan Alat <br> (g)
+                </th>
+            </tr>
+            <tr>
+                <td width="130px">
+                    {{ $hasilpengujian->zero }}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanzero}}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanzero - $hasilpengujian->zero}}
+                </td>
+            </tr>
+            <tr>
+                <td width="130px">
+                    {{ $hasilpengujian->minimum }}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanminimum}}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanminimum - $hasilpengujian->minimum}}
+                </td>
+            </tr>
+            <tr>
+                <td width="130px">
+                    {{ $hasilpengujian->bkd1 }}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanbkd1}}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanbkd1 - $hasilpengujian->bkd1}}
+                </td>
+            </tr>
+            <tr>
+                <td width="130px">
+                    {{ $hasilpengujian->bkd2 }}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanbkd2}}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanbkd2 - $hasilpengujian->bkd2}}
+                </td>
+            </tr>
+            <tr>
+                <td width="130px">
+                    {{ $hasilpengujian->bkd3 }}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanbkd3}}
+                </td>
+                <td width="130px">
+                    {{ $hasilpengujian->penunjukanbkd3 - $hasilpengujian->bkd3}}
+                </td>
+            </tr>
+        </table>
+        <br><br><br>
+        <div align="center">
+            <b>Penera Muda</b>
+            <div id="translate">Verification Officer</div>
+            <br><br><br><br><br>
+            Indri Ratna P, S.T., M.AP. <br>
+            Penata Tk.I <br>
+            NIP. 19830323 200902 2 003 <br>
+
+        </div>
+    </div>
 </body>
 
 </html>

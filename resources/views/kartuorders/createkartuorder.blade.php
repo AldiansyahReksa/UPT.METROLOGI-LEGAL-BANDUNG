@@ -4,7 +4,7 @@
     </x-slot>
     @if ($errors->any())
         <div class="alert alert-danger">
-            Validation Error!
+            Kolom Wajib Diisi!
         </div>
     @endif
 

@@ -50,5 +50,5 @@ Route::get('/kartu/delete/{id}', [KartuController::class, 'delete'])->name('kart
 Route::get('/pengujian', [PengujianController::class, 'index'])->name('pengujian');
 Route::get('/pengujian/{kartu_id}/{kartuorder_id}', [PengujianController::class, 'getById']);
 Route::get('/pengujian/{kartu_id}/{kartuorder_id}/{order_id}', [PengujianController::class, 'uji']);
-Route::post('/pengujian/aksipengujian', [PengujianController::class, 'aksiPengujian']);
+Route::post('/pengujian/aksipengujian/{order_id}', [PengujianController::class, 'aksiPengujian']);
 

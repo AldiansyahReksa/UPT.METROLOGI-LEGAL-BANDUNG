@@ -34,9 +34,9 @@
     <hr />
 
     <!-- Button to create an order for this kartu -->
-    <h2>Isi Kartu Order</h2>
+    {{-- <h2>Isi Kartu Order</h2> --}}
     <a href="/order/form/{{ $kartu->id }}/{{ $kartuorder->id }}" class="btn btn-primary" >Tambah Alat UTTP</a>
-    <a href="/" class="btn btn-primary">Halaman Utama</a>
+    
     <a href="/kartuorder/print/{{ $kartu->id }}/{{ $kartuorder->id }}" class="btn btn-success">Cetak Kartu Order</a>
     <hr />
 
@@ -47,7 +47,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">No</th>
                     <th scope="col">Jenis Alat UTTP</th>
                     <th scope="col">Merek</th>
                     <th scope="col">Tipe Atau Model</th>
@@ -65,7 +65,7 @@
             <tbody>
                 @foreach ($kartuorder->orders as $order)
                     <tr>
-                        <th scope="row">{{ $order->id }}</th>
+                        <th scope="row">{{ $order->order_number}}</th>
                         <td>{{ $order->jenis_alat_uttp }}</td>
                         <td>{{ $order->merek }}</td>
                         <td>{{ $order->tipe_atau_model }}</td>
@@ -74,10 +74,24 @@
                         <td>{{ $order->kelas }}</td>
                         <td>{{ $order->jenis_pengukuran }}</td>
                         <td>{{ $order->jumlah_at }}</td>
-                        <td>{{ $order->keterangan }}</td>
+                        <td>
+                            @if($order->status == 'lulus')
+                                Alat Lulus Uji
+                            @elseif($order->status == 'gagal')
+                                Alat Gagal Uji
+                            @else
+                                Alat Belum Diuji
+                            @endif
+                        </td>
                         <td> 
-                            {{-- <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-success btn-sm" target="_blank">Uji</a> --}}
-                            <a href="/order/print/{{ $kartu->id }}/{{$kartuorder->id}}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a>
+                            {{-- <a href="/order/print/{{ $kartu->id }}/{{$kartuorder->id}}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a> --}}
+                            <form action="/order/print/{{ $kartu->id }}/{{$kartuorder->id}}/{{$order->id}}" method="GET" target="_blank">
+                                <button type="submit" 
+                                        class="btn btn-primary btn-sm" 
+                                        {{ $order->status !== 'lulus' ? 'disabled' : '' }}>
+                                    Cetak PDF
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -86,4 +100,8 @@
     @else
         <p>Empty Data</p>
     @endif
+
+    <hr>
+    <a href="/index" class="btn btn-primary">Halaman Utama</a>
+    <hr>
 </x-bootstrap>

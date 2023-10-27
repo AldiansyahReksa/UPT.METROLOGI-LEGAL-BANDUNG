@@ -81,7 +81,7 @@ class KartuController extends Controller
   {
       try {
           $kartu = Kartu::findOrFail($id);
-  
+
           // Delete associated kartu_orders records
           $kartu->kartuOrders()->delete();
   

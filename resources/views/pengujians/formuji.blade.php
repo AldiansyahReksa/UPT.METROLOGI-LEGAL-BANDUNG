@@ -63,7 +63,7 @@
             </tr>
             <tr>
                 <th scope="row">Kapasitas</th>
-                <td>{{ $order->kapasitas }} x {{ $order->skala }}</td>
+                <td>{{ $order->kapasitas }} g x {{ $order->skala }} g</td>
             </tr>
             <tr>
                 <th scope="row">Kelas</th>
@@ -75,20 +75,21 @@
             </tr>
             <tr>
                 <th scope="row">Minimum Menimbang</th>
-                <td>{{ $minimum_menimbang }}</td>
+                <td>{{ $minimum_menimbang }} g</td>
             </tr>
         </tbody>
     </table>
 
     <hr>
 
-<form method="POST" action="/pengujian/aksipengujian">
+{{-- <form method="POST" action="/pengujian/aksipengujian/{{ $order->id }}"> --}}
+    <form action="{{ url('/pengujian/aksipengujian/' . $order->id) }}" method="POST">
     @csrf
         <table class="table table-striped text-center">
             <thead>
                 <tr>
-                    <th scope="col">Standar</th>
-                    <th scope="col" class="col-4">Penunjukan Alat</th>
+                    <th scope="col">Standar (g)</th>
+                    <th scope="col" class="col-4">Penunjukan Alat (g)</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,32 +103,41 @@
                 <tr>
                     <td><input type="text" name="minimum" class="form-control text-center" value="{{ $minimum_menimbang }}" readonly></td>
                     <td>
-                        <input type="number" name="penunjukanminimum" class="form-control" placeholder="penunjukan">
+                        <input type="number" name="penunjukanminimum" class="form-control" placeholder="penunjukan" step=".01">
                     </td>    
                 </tr>
                 <tr>
                     <td><input type="text" name="bkd1" class="form-control text-center" value="{{ $bkd1 }}" readonly></td>
                     <td>
-                        <input type="number" name="penunjukanbkd1" class="form-control" placeholder="penunjukan">
+                        <input type="number" name="penunjukanbkd1" class="form-control" placeholder="penunjukan" step=".01">
                     </td>
 
                 </tr>    
                 <tr>
                     <td><input type="text" name="bkd2" class="form-control text-center" value="{{ $bkd2 }}" readonly></td>
                     <td>
-                        <input type="number" name="penunjukanbkd2" class="form-control" placeholder="penunjukan">
+                        <input type="number" name="penunjukanbkd2" class="form-control" placeholder="penunjukan" step=".01">
                     </td>
                 </tr>
                 <tr>
                     <td><input type="text" name="bkd3" class="form-control text-center" value="{{ $bkd3 }}" readonly></td>
                     <td>
-                        <input type="number" name="penunjukanbkd3" class="form-control" placeholder="penunjukan">
+                        <input type="number" name="penunjukanbkd3" class="form-control" placeholder="penunjukan" step=".01">
                     </td>
                 </tr>
             </tbody>
         </table>
         <button type="submit" class="btn btn-primary float-right">Submit</button>
 </form>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -139,5 +149,6 @@
         {{ session('error') }}
     </div>
 @endif
+<a href="/pengujian" class="btn btn-primary">Kembali</a>
 
 </x-bootstrap>

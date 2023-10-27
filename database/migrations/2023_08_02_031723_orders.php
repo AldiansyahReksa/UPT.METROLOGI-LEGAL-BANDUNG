@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('Orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('kartu_order_id');
+            $table->unsignedBigInteger('order_number');
             $table->string('jenis_alat_uttp');
             $table->string('merek');
             $table->string('tipe_atau_model');
@@ -27,7 +28,10 @@ return new class extends Migration
             $table->string('jenis_pengukuran');
             $table->string('jumlah_at')->nullable();
             $table->string('keterangan')->nullable();
+            $table->enum('status', ['pending', 'lulus', 'gagal'])->default('pending');
             $table->timestamps();
+
+            $table->unique(['kartu_order_id', 'order_number']);
 
             $table->foreign('kartu_order_id')->references('id')->on('kartu_orders');
         });
@@ -43,4 +47,3 @@ return new class extends Migration
         Schema::dropIfExists('Orders');
     }
 };
-

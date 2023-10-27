@@ -17,6 +17,14 @@ class Kartu extends Model
     {
         return $this->hasMany(KartuOrder::class);
     }
-    
-    
+
+    protected $fillable = [
+        'order_id', 'zero', 'minimum', 'bkd1', 'bkd2', 'bkd3',
+        'penunjukanzero', 'penunjukanminimum', 'penunjukanbkd1', 'penunjukanbkd2', 'penunjukanbkd3'
+    ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

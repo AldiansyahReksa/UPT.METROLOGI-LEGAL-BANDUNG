@@ -46,7 +46,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">No</th>
                     <th scope="col">Jenis Alat UTTP</th>
                     <th scope="col">Merek</th>
                     <th scope="col">Tipe Atau Model</th>
@@ -62,7 +62,7 @@
             <tbody>
                 @foreach ($kartuorder->orders as $order)
                     <tr>
-                        <th scope="row">{{ $order->id }}</th>
+                        <th scope="row">{{ $order->order_number }}</th>
                         <td>{{ $order->jenis_alat_uttp }}</td>
                         <td>{{ $order->merek }}</td>
                         <td>{{ $order->tipe_atau_model }}</td>
@@ -71,7 +71,15 @@
                         <td>{{ $order->kelas }}</td>
                         <td>{{ $order->jenis_pengukuran }}</td>
                         <td>{{ $order->jumlah_at }}</td>
-                        <td>{{ $order->keterangan }}</td>
+                        <td>
+                            @if($order->status == 'lulus')
+                                Alat Lulus Uji
+                            @elseif($order->status == 'gagal')
+                                Alat Gagal Uji
+                            @else
+                                Alat Belum Diuji
+                            @endif
+                        </td>
                         <td> 
                             <a href="/pengujian/{{ $kartu->id }}/{{$kartuorder->id}}/{{$order->id}}" class="btn btn-success btn-sm">Uji</a>
                             {{-- <a href="/order/print/{{ $kartu->id }}/{{$order->id}}" class="btn btn-primary btn-sm" target="_blank">Cetak PDF</a> --}}

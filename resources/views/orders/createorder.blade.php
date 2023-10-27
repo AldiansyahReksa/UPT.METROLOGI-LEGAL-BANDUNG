@@ -1,10 +1,10 @@
 <x-bootstrap>
     <x-slot name="title">
-        Formulir Kartu Order
+        Formulir Alat UTTP
     </x-slot>
     @if ($errors->any())
         <div class="alert alert-danger">
-            Validation Error!
+            Kolom tidak boleh Kosong!
         </div>
     @endif
 
@@ -84,7 +84,7 @@
         {{ $message }}
         @endforeach
     </div>
-</div>
+  </div>
 
 <div class="mb-3">
     <label for="skala" class="form-label">Skala (gram)</label>
